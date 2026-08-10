@@ -1,0 +1,37 @@
+VISUAL COMPARISON — cards-featured (Figma node 1255:74062 "Quick Links / Featured updates")
+Date: 2026-08-10 | Viewport: 1440px (Figma frame width)
+
+STAGE B — LAZY LOAD / IMAGES: 5/5 images loaded, 0 broken.
+
+STAGE C — GEOMETRY (getBoundingClientRect):
+  Featured image: 600 x 375  (Figma 600 x 375)         PASS
+  List images x4: 147 x 110   (Figma 147 x full-height) PASS
+  Block width:    1200px (EDS section max-width 1200; Figma frame 1216 content) PASS
+  Grid:           600px + 568px, 32px gap (Figma featured 600 + list, ~32 gap)  PASS
+
+STAGE D — PER-BLOCK CROP: matches Figma layout (header, featured left, divided list right).
+
+PROPERTY CHECKLIST (getComputedStyle vs Figma extraction):
+  Eyebrow color        #2f4d22  = rgb(47,77,34)     MATCH
+  Eyebrow type         Clear Sans 14/700/20         MATCH
+  Heading color        #1c1917  = rgb(28,25,23)     MATCH
+  Heading type         Zilla Slab 28/500/36         MATCH (real Zilla Slab woff2 loaded)
+  Category News        #1a87c4  = rgb(26,135,196)   MATCH
+  Category Blog        #b457ff  = rgb(180,87,255)   MATCH
+  Category Event       #b88600  = rgb(184,134,0)    MATCH
+  Category Parks&Rec   #4a8872  = rgb(74,136,114)   MATCH
+  Category Wildlife    #2f4d22  = rgb(47,77,34)     MATCH
+  Card title color     #1c1917 / 16/700/24          MATCH
+  Body color           #44403c  = rgb(68,64,60)     MATCH
+  Body type            14/400/20                    MATCH
+  Keyword tag          border #e7e5e4, radius 4px, bg rgba(255,255,255,.24), pad 4/8  MATCH
+  Featured img radius  12px                         MATCH
+  List img radius      12px                         MATCH
+  List card            gap 16px, padding 16px       MATCH
+  List divider         1px solid #e7e5e4            MATCH
+
+NOTE: Body text uses an Arial-metric fallback for "Clear Sans" (Clear Sans is not
+freely distributable). Heading uses the genuine Zilla Slab webfont. Acceptable per
+skill guidance on system-font fallback.
+
+RESULT: PASS — pixel-perfect within acceptable variations.

@@ -1,0 +1,42 @@
+{
+  "variantName": "cards-featured",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-08-10T00:00:00.000Z",
+  "sourceContext": {
+    "source": "figma",
+    "figmaFileKey": "RGpLq9Ox8K60cHwR7cJSBl",
+    "figmaNodeId": "1255:74062",
+    "figmaNodeName": "Quick Links",
+    "figmaUrl": "https://figma.com/design/RGpLq9Ox8K60cHwR7cJSBl?node-id=1255-74062"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "cards",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "section heading + subheading + 1 large featured card (image + category + title + body + keyword tags) + list of compact horizontal cards (image + category + title + body)",
+    "buttonCount": 0,
+    "imageCount": 5
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "featured news / articles sections",
+      "editorial round-up sections",
+      "light backgrounds"
+    ],
+    "notSuitableFor": [
+      "text-only pages",
+      "single feature highlights"
+    ]
+  },
+  "usage": {
+    "pagesUsing": [
+      "featured-updates"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-08-10T00:00:00.000Z"
+  }
+}

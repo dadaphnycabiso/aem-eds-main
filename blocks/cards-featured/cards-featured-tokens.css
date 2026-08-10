@@ -1,0 +1,120 @@
+/* blocks/cards-featured/cards-featured-tokens.css */
+
+/* ⚠️ ALL values extracted from cards-featured-measurements.txt (Figma node 1255:74062) */
+
+.cards-featured {
+  /* ===== LAYOUT & DIMENSIONS ===== */
+  --cards-featured-max-width: 1216px;
+  --cards-featured-columns: 2;
+  --cards-featured-column-gap: 32px;
+  --cards-featured-featured-width: 600px;
+  --cards-featured-list-width: 600px;
+  --cards-featured-header-gap: 32px;      /* section header -> body */
+
+  /* ===== CONTAINER COLORS ===== */
+  --cards-featured-background: transparent;
+
+  /* ===== TYPOGRAPHY - SECTION EYEBROW ===== */
+  --cards-featured-eyebrow-font-family: 'Clear Sans', clear-sans-fallback, sans-serif;
+  --cards-featured-eyebrow-font-size: 14px;
+  --cards-featured-eyebrow-font-weight: 700;
+  --cards-featured-eyebrow-font-style: normal;
+  --cards-featured-eyebrow-line-height: 20px;
+  --cards-featured-eyebrow-letter-spacing: normal;
+  --cards-featured-eyebrow-text-transform: none;
+  --cards-featured-eyebrow-color: #2f4d22;
+  --cards-featured-eyebrow-margin-bottom: 4px;
+
+  /* ===== TYPOGRAPHY - SECTION HEADING ===== */
+  --cards-featured-heading-font-family: 'Zilla Slab', zilla-slab-fallback, serif;
+  --cards-featured-heading-font-size: 28px;
+  --cards-featured-heading-font-weight: 500;
+  --cards-featured-heading-font-style: normal;
+  --cards-featured-heading-line-height: 36px;
+  --cards-featured-heading-letter-spacing: normal;
+  --cards-featured-heading-text-transform: none;
+  --cards-featured-heading-color: #1c1917;
+  --cards-featured-heading-margin-bottom: 32px;
+
+  /* ===== TYPOGRAPHY - CARD CATEGORY (per-card eyebrow) ===== */
+  --cards-featured-category-font-family: 'Clear Sans', clear-sans-fallback, sans-serif;
+  --cards-featured-category-font-size: 11px;
+  --cards-featured-category-font-weight: 700;
+  --cards-featured-category-font-style: normal;
+  --cards-featured-category-line-height: 16px;
+  --cards-featured-category-letter-spacing: normal;
+  --cards-featured-category-text-transform: none;
+  --cards-featured-category-color: #2f4d22;   /* default; per-card overrides below */
+  --cards-featured-category-margin-bottom: 4px;
+
+  /* Per-category accent colors (source: per-card Subheading bg) */
+  --cards-featured-category-news: #1a87c4;
+  --cards-featured-category-blog: #b457ff;
+  --cards-featured-category-event: #b88600;
+  --cards-featured-category-parks: #4a8872;
+  --cards-featured-category-wildlife: #2f4d22;
+
+  /* ===== TYPOGRAPHY - CARD TITLE ===== */
+  --cards-featured-title-font-family: 'Clear Sans', clear-sans-fallback, sans-serif;
+  --cards-featured-title-font-size: 16px;
+  --cards-featured-title-font-weight: 700;
+  --cards-featured-title-font-style: normal;
+  --cards-featured-title-line-height: 24px;
+  --cards-featured-title-letter-spacing: normal;
+  --cards-featured-title-color: #1c1917;
+  --cards-featured-title-margin-bottom: 4px;
+
+  /* ===== TYPOGRAPHY - BODY ===== */
+  --cards-featured-body-font-family: 'Clear Sans', clear-sans-fallback, sans-serif;
+  --cards-featured-body-font-size: 14px;
+  --cards-featured-body-font-weight: 400;
+  --cards-featured-body-font-style: normal;
+  --cards-featured-body-line-height: 20px;
+  --cards-featured-body-letter-spacing: normal;
+  --cards-featured-body-color: #44403c;
+  --cards-featured-body-margin-bottom: 8px;
+
+  /* ===== KEYWORD TAGS ===== */
+  --cards-featured-tag-font-family: 'Clear Sans', clear-sans-fallback, sans-serif;
+  --cards-featured-tag-font-size: 12px;
+  --cards-featured-tag-font-weight: 400;
+  --cards-featured-tag-line-height: 18px;
+  --cards-featured-tag-color: #1c1917;
+  --cards-featured-tag-background: #ffffff3d;
+  --cards-featured-tag-border-width: 1px;
+  --cards-featured-tag-border-style: solid;
+  --cards-featured-tag-border-color: #e7e5e4;
+  --cards-featured-tag-border-radius: 4px;
+  --cards-featured-tag-padding-y: 4px;
+  --cards-featured-tag-padding-x: 8px;
+  --cards-featured-tag-gap: 4px;
+
+  /* ===== FEATURED CARD ===== */
+  --cards-featured-featured-padding-y: 16px;
+  --cards-featured-featured-padding-x: 0;
+  --cards-featured-featured-image-height: 375px;
+  --cards-featured-featured-image-radius: 12px;
+  --cards-featured-featured-content-gap: 8px;
+  --cards-featured-featured-image-margin-bottom: 4px;
+
+  /* ===== LIST CARD ===== */
+  --cards-featured-list-card-padding: 16px;
+  --cards-featured-list-card-gap: 16px;
+  --cards-featured-list-card-radius: 16px;
+  --cards-featured-list-image-width: 147px;
+  --cards-featured-list-image-radius: 12px;
+  --cards-featured-list-image-min-height: 96px;
+  --cards-featured-list-content-gap: 4px;
+  --cards-featured-list-divider-width: 1px;
+  --cards-featured-list-divider-color: #e7e5e4;
+
+  /* ===== CARD CONTAINER ===== */
+  --cards-featured-card-border-width: 0;
+  --cards-featured-card-border-style: none;
+  --cards-featured-card-border-radius: 16px;
+  --cards-featured-card-shadow: none;
+
+  /* ===== TRANSITIONS ===== */
+  --cards-featured-transition-duration: 200ms;
+  --cards-featured-transition-timing: ease;
+}

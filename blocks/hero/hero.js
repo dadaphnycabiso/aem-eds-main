@@ -20,7 +20,7 @@ function renderHeroWelcome(block) {
 
   block.innerHTML = `
     <div>
-      <div><picture><img src="https://www.figma.com/api/mcp/asset/1e4f78e4-6cc5-4fe0-b090-fe4f96d1a198.png" alt="People enjoying New Zealand outdoors"></picture></div>
+      <div><picture><img src="/images/hero-welcome-bg.png" alt="People enjoying New Zealand outdoors"></picture></div>
     </div>
     <div class="hero-welcome-content">
       <div>

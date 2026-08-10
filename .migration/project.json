@@ -1,0 +1,9 @@
+{
+  "sites": {
+    "aem-eds-main": {
+      "previewOrg": "dadaphnycabiso",
+      "previewSite": "aem-eds-main",
+      "baseUrl": "https://main--aem-eds-main--dadaphnycabiso.aem.page "
+    }
+  }
+}

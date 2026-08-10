@@ -1,0 +1,75 @@
+/* DOC Navigation Bar — design tokens */
+
+/* All values extracted from Figma node 1255:73313 (see header-measurements.txt) */
+
+.header {
+  /* ===== LAYOUT & DIMENSIONS ===== */
+  --header-gold-height: 10px;
+  --header-height: 76px;
+  --header-max-width: 1440px;
+  --header-padding-y: 16px;
+  --header-padding-x: 112px;
+  --header-gap: 32px;
+  --header-left-gap: 20px;
+  --header-menu-gap: 16px;
+  --header-menu-padding-x: 12px;
+  --header-right-gap: 16px;
+  --header-logo-width: 118px;
+  --header-logo-height: 45px;
+  --header-item-height: 60px;
+  --header-item-inner-gap: 8px;
+  --header-item-radius: 8px;
+  --header-chevron-size: 24px;
+  --header-chevron-radius: 4px;
+
+  /* ===== COLORS ===== */
+  --header-gold: #ffc51d;
+  --header-background: #133029;
+  --header-label-color: #cce5b9;      /* "Te Reo" */
+  --header-item-color: #fafaf9;       /* "Item Name" */
+  --header-search-bg: #fff;
+  --header-search-border: #e7e5e4;
+  --header-search-text: #292524;
+  --header-search-placeholder: #57534e;
+  --header-login-bg: #cce5b9;
+  --header-login-bg-hover: #e5f2dc;
+  --header-login-text: #1c1917;
+
+  /* ===== TYPOGRAPHY ===== */
+  --header-font-family: 'Clear Sans', 'Manrope', 'Segoe UI', roboto, roboto-fallback, sans-serif;
+  --header-label-font-size: 11px;
+  --header-label-font-weight: 400;
+  --header-label-line-height: 16px;
+  --header-item-font-size: 12px;
+  --header-item-font-weight: 500;
+  --header-item-line-height: 18px;
+  --header-search-font-size: 12px;
+  --header-search-font-weight: 400;
+  --header-search-line-height: 18px;
+  --header-login-font-size: 14px;
+  --header-login-font-weight: 700;
+  --header-login-line-height: 20px;
+
+  /* ===== SEARCH ===== */
+  --header-search-width: 261px;
+  --header-search-height: 36px;
+  --header-search-padding-x: 12px;
+  --header-search-gap: 8px;
+  --header-search-border-width: 1px;
+  --header-search-radius: 100px;
+
+  /* ===== LOGIN BUTTON ===== */
+  --header-login-padding-y: 12px;
+  --header-login-padding-x: 16px;
+  --header-login-gap: 8px;
+  --header-login-min-height: 44px;
+  --header-login-radius: 9999px;
+  --header-login-icon-size: 16px;
+
+  /* ===== ABN BADGE ===== */
+  --header-abn-width: 120px;
+
+  /* ===== EFFECTS ===== */
+  --header-transition-duration: 200ms;
+  --header-transition-timing: ease;
+}

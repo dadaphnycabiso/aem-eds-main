@@ -104,6 +104,68 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
 }
 
 /**
+ * Splits a bilingual nav label into two lines: a small "Te Reo" label above
+ * the main item name. Content authors write "Te Reo | Item Name" (pipe
+ * separated). The first anchor/text node in each top-level <li> is decorated.
+ * @param {Element} navSections The nav sections container
+ */
+function decorateNavItems(navSections) {
+  navSections.querySelectorAll(':scope .default-content-wrapper > ul > li').forEach((li) => {
+    // the label lives in the first child that isn't the submenu <ul>
+    const labelHost = [...li.children].find((c) => c.tagName !== 'UL') || li;
+    const link = labelHost.querySelector('a');
+    const target = link || labelHost;
+    const raw = target.textContent.trim();
+    if (!raw) return;
+
+    const [top, main] = raw.includes('|')
+      ? raw.split('|').map((s) => s.trim())
+      : [null, raw];
+
+    target.textContent = '';
+    if (top) {
+      const topSpan = document.createElement('span');
+      topSpan.className = 'nav-item-label';
+      topSpan.textContent = top;
+      target.append(topSpan);
+    }
+    const nameSpan = document.createElement('span');
+    nameSpan.className = 'nav-item-name';
+    nameSpan.textContent = main;
+    target.append(nameSpan);
+  });
+}
+
+/**
+ * Turns the search icon placeholder in the tools area into a search input.
+ * @param {Element} navTools The nav tools container
+ */
+function decorateSearch(navTools) {
+  const searchIcon = navTools.querySelector('.icon-search');
+  if (!searchIcon) return;
+  const host = searchIcon.closest('p') || searchIcon.parentElement;
+  const search = document.createElement('div');
+  search.className = 'nav-search';
+  const input = document.createElement('input');
+  input.type = 'search';
+  input.placeholder = 'Search';
+  input.setAttribute('aria-label', 'Search');
+  search.append(searchIcon, input);
+  host.replaceWith(search);
+}
+
+/**
+ * Marks the ABN badge image wrapper so it can be styled/positioned.
+ * @param {Element} navTools The nav tools container
+ */
+function decorateAbnBadge(navTools) {
+  const badge = navTools.querySelector('p > picture, p > img');
+  if (!badge) return;
+  const host = badge.closest('p');
+  host.classList.add('nav-abn');
+}
+
+/**
  * loads and decorates the header, mainly the nav
  * @param {Element} block The header block element
  */
@@ -126,10 +188,12 @@ export default async function decorate(block) {
   });
 
   const navBrand = nav.querySelector('.nav-brand');
-  const brandLink = navBrand.querySelector('.button');
-  if (brandLink) {
-    brandLink.className = '';
-    brandLink.closest('.button-container').className = '';
+  if (navBrand) {
+    const brandLink = navBrand.querySelector('.button');
+    if (brandLink) {
+      brandLink.className = '';
+      brandLink.closest('.button-container').className = '';
+    }
   }
 
   const navSections = nav.querySelector('.nav-sections');
@@ -144,6 +208,13 @@ export default async function decorate(block) {
         }
       });
     });
+    decorateNavItems(navSections);
+  }
+
+  const navTools = nav.querySelector('.nav-tools');
+  if (navTools) {
+    decorateAbnBadge(navTools);
+    decorateSearch(navTools);
   }
 
   // hamburger for mobile

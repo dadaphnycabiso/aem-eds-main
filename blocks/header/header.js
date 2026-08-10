@@ -282,6 +282,13 @@ export default async function decorate(block) {
 
   const navTools = nav.querySelector('.nav-tools');
   if (navTools) {
+    // Remove duplicate <img> inside icon spans (caused by decorateIcons running twice)
+    navTools.querySelectorAll('.icon').forEach((icon) => {
+      const imgs = icon.querySelectorAll('img');
+      if (imgs.length > 1) {
+        [...imgs].slice(1).forEach((img) => img.remove());
+      }
+    });
     decorateAbnBadge(navTools);
     decorateSearch(navTools);
   }

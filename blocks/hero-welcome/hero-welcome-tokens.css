@@ -1,0 +1,69 @@
+/* DOC "Haere mai" Hero Banner — design tokens */
+
+/* All values extracted from Figma node 1536:66360 (see hero-welcome-measurements.txt) */
+
+.hero-welcome {
+  /* ===== LAYOUT & DIMENSIONS ===== */
+  --hero-welcome-height: 600px;
+  --hero-welcome-min-height: 480px;
+  --hero-welcome-content-width: 594px;
+  --hero-welcome-search-width: 592px;
+  --hero-welcome-content-gap: 24px;
+  --hero-welcome-heading-gap: 12px;
+  --hero-welcome-buttons-gap: 8px;
+
+  /* ===== COLORS ===== */
+  --hero-welcome-subheading-color: #ffd024;
+  --hero-welcome-heading-color: #fafaf9;
+  --hero-welcome-button-bg: rgb(255 255 255 / 80%);
+  --hero-welcome-button-bg-hover: #fff;
+  --hero-welcome-button-border: #d6d3d1;
+  --hero-welcome-button-text: #1c1917;
+  --hero-welcome-search-bg: #fff;
+  --hero-welcome-search-text: #1c1917;
+  --hero-welcome-search-placeholder: #57534e;
+  --hero-welcome-search-icon: #1c1917;
+
+  /* image darkening overlay (transparent -> 40% black) */
+  --hero-welcome-overlay: linear-gradient(180deg, rgb(0 0 0 / 0%) 0%, rgb(0 0 0 / 40%) 60%);
+
+  /* ===== TYPOGRAPHY ===== */
+  --hero-welcome-subheading-family: 'Clear Sans', 'Manrope', 'Segoe UI', roboto, sans-serif;
+  --hero-welcome-subheading-size: 22px;
+  --hero-welcome-subheading-weight: 700;
+  --hero-welcome-subheading-line-height: 28px;
+  --hero-welcome-heading-family: 'Zilla Slab', georgia, 'Times New Roman', serif;
+  --hero-welcome-heading-size: 64px;
+  --hero-welcome-heading-weight: 500;
+  --hero-welcome-heading-line-height: 72px;
+  --hero-welcome-button-family: 'Clear Sans', 'Manrope', 'Segoe UI', roboto, sans-serif;
+  --hero-welcome-button-size: 14px;
+  --hero-welcome-button-weight: 700;
+  --hero-welcome-button-line-height: 20px;
+  --hero-welcome-search-family: 'Clear Sans', 'Manrope', 'Segoe UI', roboto, sans-serif;
+  --hero-welcome-search-size: 16px;
+  --hero-welcome-search-weight: 400;
+  --hero-welcome-search-line-height: 24px;
+
+  /* ===== BUTTONS (category pills) ===== */
+  --hero-welcome-button-padding-y: 12px;
+  --hero-welcome-button-padding-x: 16px;
+  --hero-welcome-button-min-height: 36px;
+  --hero-welcome-button-radius: 9999px;
+  --hero-welcome-button-border-width: 1px;
+
+  /* ===== SEARCH BAR ===== */
+  --hero-welcome-search-height: 72px;
+  --hero-welcome-search-padding-x: 16px;
+  --hero-welcome-search-gap: 16px;
+  --hero-welcome-search-radius: 100px;
+  --hero-welcome-search-icon-size: 48px;
+
+  /* ===== SHADOWS ===== */
+  --hero-welcome-heading-shadow: 0 1px 14px rgb(0 0 0 / 80%);
+  --hero-welcome-search-shadow: 0 0 1px rgb(0 0 0 / 30%), 0 8px 12px rgb(0 0 0 / 15%);
+
+  /* ===== EFFECTS ===== */
+  --hero-welcome-transition-duration: 200ms;
+  --hero-welcome-transition-timing: ease;
+}

@@ -1,0 +1,206 @@
+/* Import DOC hero banner design tokens */
+@import url('./hero-welcome-tokens.css');
+
+/* full-bleed layout */
+.hero-welcome-container .hero-welcome-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.hero-welcome {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  gap: var(--hero-welcome-content-gap);
+  min-height: var(--hero-welcome-min-height);
+  padding: 40px 24px;
+  overflow: hidden;
+  font-family: var(--hero-welcome-button-family);
+  text-align: center;
+}
+
+/* background image + darkening overlay */
+.hero-welcome picture {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+}
+
+.hero-welcome img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-welcome::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: var(--hero-welcome-overlay);
+}
+
+/* ===== content column (subheading + heading + pills) ===== */
+.hero-welcome .hero-welcome-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--hero-welcome-heading-gap);
+  width: 100%;
+  max-width: var(--hero-welcome-content-width);
+  margin: 0 auto;
+}
+
+/* let the EDS-generated inner content wrapper collapse so subheading,
+   heading and pills sit directly in the flex column — but NOT the
+   classed pills wrapper */
+.hero-welcome .hero-welcome-content > div:not([class]) {
+  display: contents;
+}
+
+/* subheading "Welcome" */
+.hero-welcome .hero-welcome-content p {
+  margin: 0;
+  color: var(--hero-welcome-subheading-color);
+  font-family: var(--hero-welcome-subheading-family);
+  font-size: var(--hero-welcome-subheading-size);
+  font-weight: var(--hero-welcome-subheading-weight);
+  line-height: var(--hero-welcome-subheading-line-height);
+  text-shadow: var(--hero-welcome-heading-shadow);
+}
+
+/* main heading "Haere mai" */
+.hero-welcome .hero-welcome-content h1,
+.hero-welcome .hero-welcome-content h2 {
+  margin: 0;
+  color: var(--hero-welcome-heading-color);
+  font-family: var(--hero-welcome-heading-family);
+  font-size: var(--hero-welcome-heading-size);
+  font-weight: var(--hero-welcome-heading-weight);
+  line-height: var(--hero-welcome-heading-line-height);
+  text-shadow: var(--hero-welcome-heading-shadow);
+}
+
+/* ===== category pills ===== */
+.hero-welcome .hero-welcome-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--hero-welcome-buttons-gap);
+  margin-top: var(--hero-welcome-content-gap);
+}
+
+.hero-welcome .hero-welcome-pills a:any-link {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 0;
+  border: var(--hero-welcome-button-border-width) solid var(--hero-welcome-button-border);
+  border-radius: var(--hero-welcome-button-radius);
+  padding: var(--hero-welcome-button-padding-y) var(--hero-welcome-button-padding-x);
+  min-height: var(--hero-welcome-button-min-height);
+  background: var(--hero-welcome-button-bg);
+  color: var(--hero-welcome-button-text);
+  font-family: var(--hero-welcome-button-family);
+  font-size: var(--hero-welcome-button-size);
+  font-weight: var(--hero-welcome-button-weight);
+  line-height: var(--hero-welcome-button-line-height);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color var(--hero-welcome-transition-duration) var(--hero-welcome-transition-timing);
+}
+
+.hero-welcome .hero-welcome-pills a:hover,
+.hero-welcome .hero-welcome-pills a:focus {
+  background: var(--hero-welcome-button-bg-hover);
+  color: var(--hero-welcome-button-text);
+  text-decoration: none;
+}
+
+/* ===== search bar ===== */
+.hero-welcome .hero-welcome-search {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  gap: var(--hero-welcome-search-gap);
+  width: 100%;
+  max-width: var(--hero-welcome-search-width);
+  height: var(--hero-welcome-search-height);
+  margin: var(--hero-welcome-content-gap) auto 0;
+  padding: 0 var(--hero-welcome-search-padding-x);
+  border-radius: var(--hero-welcome-search-radius);
+  background: var(--hero-welcome-search-bg);
+  box-shadow: var(--hero-welcome-search-shadow);
+}
+
+.hero-welcome .hero-welcome-search-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: var(--hero-welcome-search-icon-size);
+  height: var(--hero-welcome-search-icon-size);
+}
+
+.hero-welcome .hero-welcome-search-icon .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.hero-welcome .hero-welcome-search input {
+  flex: 1 1 auto;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--hero-welcome-search-text);
+  font-family: var(--hero-welcome-search-family);
+  font-size: var(--hero-welcome-search-size);
+  font-weight: var(--hero-welcome-search-weight);
+  line-height: var(--hero-welcome-search-line-height);
+}
+
+.hero-welcome .hero-welcome-search input::placeholder {
+  color: var(--hero-welcome-search-placeholder);
+  opacity: 1;
+}
+
+.hero-welcome .hero-welcome-search-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: var(--hero-welcome-button-min-height);
+  height: var(--hero-welcome-button-min-height);
+  margin: 0;
+  border: none;
+  border-radius: var(--hero-welcome-button-radius);
+  padding: 0;
+  background: transparent;
+  color: var(--hero-welcome-search-icon);
+  cursor: pointer;
+}
+
+.hero-welcome .hero-welcome-search-submit .icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* ===== responsive ===== */
+@media (width >= 900px) {
+  .hero-welcome {
+    height: var(--hero-welcome-height);
+    padding: 40px 32px;
+  }
+}
+
+@media (width < 900px) {
+  .hero-welcome .hero-welcome-content h1,
+  .hero-welcome .hero-welcome-content h2 {
+    font-size: 40px;
+    line-height: 1.15;
+  }
+}

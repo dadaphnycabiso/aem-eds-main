@@ -1,0 +1,89 @@
+VISUAL MEASUREMENT CHECKLIST FOR hero-welcome (DOC Haere mai Hero Banner)
+=========================================================================
+Extracted from Figma node: 1536:66360 (HeroBanners)
+Child nodes: Image/Image (1525:59889), Heading (1525:59926),
+             Buttons (1870:55973), Search (1644:34352)
+Date: 2026-08-10
+
+LAYOUT & DIMENSIONS
+☑ Container width: 1440px full-bleed (source: HeroBanners width=1440)
+☑ Container height: 600px (source: Hero Section h-[600px])
+☑ Content column width: 594px (source: Heading w-[594px])
+☑ Heading vertical position: ~250px from hero top (source: Heading y=336 - hero y=86)
+☑ Heading gap (subheading to title): 12px (source: Heading gap-[12px])
+☑ Buttons row width: 392px, gap 8px (source: Frame 1000004205 gap-[8px])
+☑ Search bar width: 592px, height 72px (source: Search w-[592px] h-[72px])
+☑ Search bar position: y=650 (near hero bottom) (source: Search y=650)
+
+SPACING (EXACT PIXELS)
+☑ Section padding: content centered, ~40px vertical rhythm (source: layout)
+☑ Heading internal gap: 12px (source: Heading gap-[12px])
+☑ Button padding: 12px 16px (source: Button px-[16px] py-[12px])
+☑ Button gap (icon/text internal): 8px (source: Button gap-[8px])
+☑ Gap between buttons: 8px (source: Frame gap-[8px])
+☑ Search internal gap: 16px (source: Search gap-[16px])
+☑ Search padding: 0 16px (source: Search px-[16px])
+
+COLORS (EXACT HEX + OPACITY)
+☑ Subheading "Welcome" color: #ffd024 (source: primitive/sun/400)
+☑ Main heading "Haere mai" color: #fafaf9 (source: text-primary-inverse)
+☑ Background image overlay gradient: transparent 0% -> rgba(0,0,0,0.40) 49% (source: Media linear-gradient)
+☑ Button background: #ffffffcc (white 80%) (source: button-outline-bg)
+☑ Button border color: #d6d3d1 (source: border-[#d6d3d1] / primitive/neutral/300)
+☑ Button text color: #1c1917 (source: text-primary / primitive/neutral/900)
+☑ Search background: #ffffff (source: primitive/white-opacity/100)
+☑ Search text color: #1c1917 (source: text-primary)
+
+TYPOGRAPHY (ALL PROPERTIES)
+☑ Subheading font-family: Clear Sans (fallback sans-serif) (source: font-['Clear_Sans'])
+☑ Subheading font-size: 22px (source: text-[22px])
+☑ Subheading font-weight: 700 (source: font-bold)
+☑ Subheading line-height: 28px (source: leading-[28px])
+☑ Subheading letter-spacing: normal (source: no tracking class)
+☑ Subheading text-transform: none (source: no uppercase)
+☑ Subheading font-style: normal (source: no italic)
+☑ Heading font-family: Zilla Slab (fallback serif) (source: font-['Zilla_Slab'])
+☑ Heading font-size: 64px (source: text-[64px])
+☑ Heading font-weight: 500 medium (source: font-medium)
+☑ Heading line-height: 72px (source: leading-[72px])
+☑ Heading font-style: normal (source: no italic)
+☑ Button font-family: Clear Sans (source: font-['Clear_Sans'])
+☑ Button font-size: 14px (source: text-[14px])
+☑ Button font-weight: 700 (source: font-bold)
+☑ Button line-height: 20px (source: leading-[20px])
+☑ Search text font-family: Clear Sans (source: font-['Clear_Sans'])
+☑ Search text font-size: 16px (source: text-[16px])
+☑ Search text font-weight: 400 (source: font-normal)
+☑ Search line-height: 24px (source: leading-[24px])
+
+BORDERS & RADIUS (CRITICAL)
+☑ Hero border: none (source: no border on Hero Section)
+☑ Button border width: 1px (source: border-[1px])
+☑ Button border style: solid (source: border-solid)
+☑ Button border color: #d6d3d1 (source: border-[#d6d3d1])
+☑ Button border radius: 9999px (rounded-full) (source: rounded-full)
+☑ Search border radius: 100px (source: rounded-[100px])
+☑ Search border: none (source: no border, uses shadow only)
+☑ Search icon button radius: 8px left / full right (source: rounded-[8px] / rounded-full)
+
+SHADOWS (EXACT VALUES)
+☑ Heading text shadow: 0px 1px 14px 0px rgba(0,0,0,0.80) (source: Heading boxShadow)
+☑ Search shadow 1: 0px 0px 1px 0px rgba(0,0,0,0.30) (source: Search boxShadow)
+☑ Search shadow 2: 0px 8px 12px 0px rgba(0,0,0,0.15) (source: Search boxShadow)
+☑ Button shadow: none (source: no shadow on Button)
+
+EFFECTS & TRANSITIONS
+☑ Button hover: background lighten toward opaque white (source: outline button pattern)
+☑ Transition duration: 200ms (source: standard)
+☑ Transition timing: ease (source: standard)
+☑ Opacity changes: none (source: none in extraction)
+☑ Background image: object-fit cover, full-bleed (source: Image/Image w-full h-[600px] overflow-hidden)
+
+CONTENT NOTES
+- Subheading text: "Welcome"
+- Heading text: "Haere mai"
+- Category pills: Online bookings, Walking, Huts, Hunting
+- Search placeholder: "Search"
+- Fonts "Clear Sans" and "Zilla Slab" are not bundled; fallbacks used:
+  Clear Sans -> 'Clear Sans','Manrope','Segoe UI',sans-serif
+  Zilla Slab -> 'Zilla Slab', georgia, 'Times New Roman', serif

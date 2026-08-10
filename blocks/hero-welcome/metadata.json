@@ -1,0 +1,27 @@
+{
+  "variantName": "hero-welcome",
+  "blockType": "hero",
+  "description": "Full-bleed hero banner with a darkened background photo, bilingual subheading + heading, a row of rounded category pill links, and a prominent rounded search bar. Migrated from the DOC 'Haere mai' Figma design.",
+  "source": {
+    "type": "figma",
+    "fileKey": "RGpLq9Ox8K60cHwR7cJSBl",
+    "nodeId": "1536:66360",
+    "name": "HeroBanners"
+  },
+  "characteristics": {
+    "purpose": "hero",
+    "colorScheme": "dark",
+    "density": "spacious",
+    "imagePattern": "large",
+    "contentPattern": {
+      "structure": "background image + centered subheading + large heading + pill links + search bar",
+      "buttonCount": 4,
+      "imageCount": 1
+    }
+  },
+  "usage": {
+    "pagesUsing": ["haere-mai"],
+    "reuseCount": 1,
+    "lastUsed": "2026-08-10"
+  }
+}

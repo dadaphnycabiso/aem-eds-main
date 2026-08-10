@@ -1,0 +1,58 @@
+/* DOC Footer — design tokens */
+
+/* All values extracted from Figma node 1772:95433 (see footer-measurements.txt) */
+
+footer .footer {
+  /* ===== LAYOUT & DIMENSIONS ===== */
+  --footer-max-width: 1440px;
+  --footer-padding-y: 64px;
+  --footer-padding-x: 112px;
+  --footer-padding-x-mobile: 24px;
+  --footer-section-gap: 64px;
+  --footer-gold-height: 10px;
+  --footer-doc-logo-width: 150px;
+  --footer-doc-logo-height: 57px;
+  --footer-nz-logo-width: 245px;
+  --footer-nz-logo-height: 56px;
+
+  /* ===== COLORS ===== */
+  --footer-background: #194036;
+  --footer-texture-opacity: 0.4;
+  --footer-link-color: #fafaf9;
+  --footer-body-color: #d6d3d1;
+  --footer-accent: #ffc51d;
+  --footer-gold: #ffc51d;
+  --footer-divider-color: #78716c;
+  --footer-link-hover-color: #ffc51d;
+  --footer-link-hover-bg: transparent;
+
+  /* ===== TYPOGRAPHY ===== */
+  --footer-font-family: 'Clear Sans', 'Manrope', 'Segoe UI', roboto, roboto-fallback, sans-serif;
+  --footer-link-font-size: 14px;
+  --footer-link-font-weight: 700;
+  --footer-link-line-height: 20px;
+  --footer-link-font-style: normal;
+  --footer-body-font-size: 14px;
+  --footer-body-font-weight: 400;
+  --footer-body-line-height: 20px;
+  --footer-body-font-style: normal;
+
+  /* ===== PRIMARY LINKS (buttons) ===== */
+  --footer-link-padding-y: 12px;
+  --footer-link-padding-x: 24px;
+  --footer-link-min-height: 40px;
+  --footer-link-radius: 8px;
+  --footer-link-gap: 32px;
+
+  /* ===== DIVIDER ===== */
+  --footer-divider-width: 1px;
+  --footer-divider-style: solid;
+  --footer-divider-padding-y: 8px;
+
+  /* ===== BOTTOM BAR ===== */
+  --footer-legal-gap: 16px;
+
+  /* ===== EFFECTS ===== */
+  --footer-transition-duration: 200ms;
+  --footer-transition-timing: ease;
+}

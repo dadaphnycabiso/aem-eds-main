@@ -1,20 +1,165 @@
-footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+/* Import DOC footer design tokens */
+@import url('./footer-tokens.css');
+
+/* ===== footer shell ===== */
+footer .footer {
+  position: relative;
+  background-color: var(--footer-background);
+  color: var(--footer-body-color);
+  font-family: var(--footer-font-family);
+  overflow: hidden;
+
+  /* gold accent bar across the very bottom */
+  border-bottom: var(--footer-gold-height) solid var(--footer-gold);
+}
+
+/* decorative texture wash behind the content */
+footer .footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url('./footer-texture.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: var(--footer-texture-opacity);
+  pointer-events: none;
 }
 
 footer .footer > div {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: var(--footer-section-gap);
   margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+  max-width: var(--footer-max-width);
+  padding: var(--footer-padding-y) var(--footer-padding-x-mobile) 0;
 }
 
 footer .footer p {
   margin: 0;
 }
 
+footer .footer a:any-link {
+  color: currentcolor;
+  text-decoration: none;
+  transition: color var(--footer-transition-duration) var(--footer-transition-timing);
+}
+
+footer .footer a:hover,
+footer .footer a:focus {
+  color: var(--footer-link-hover-color);
+  text-decoration: none;
+}
+
+/* ===== row 1: brand logo ===== */
+footer .footer .footer-brand .default-content-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+footer .footer .footer-brand p {
+  display: flex;
+  line-height: 0;
+}
+
+footer .footer .footer-brand img {
+  width: var(--footer-doc-logo-width);
+  height: var(--footer-doc-logo-height);
+  object-fit: contain;
+}
+
+/* ===== row 2: primary links ===== */
+footer .footer .footer-links .default-content-wrapper > ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--footer-link-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+footer .footer .footer-links li {
+  display: flex;
+}
+
+footer .footer .footer-links li a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-height: var(--footer-link-min-height);
+  padding: var(--footer-link-padding-y) var(--footer-link-padding-x);
+  border-radius: var(--footer-link-radius);
+  background: var(--footer-link-hover-bg);
+  color: var(--footer-link-color);
+  font-size: var(--footer-link-font-size);
+  font-weight: var(--footer-link-font-weight);
+  font-style: var(--footer-link-font-style);
+  line-height: var(--footer-link-line-height);
+  white-space: nowrap;
+}
+
+footer .footer .footer-links li a:hover,
+footer .footer .footer-links li a:focus {
+  color: var(--footer-link-hover-color);
+}
+
+/* ===== divider ===== */
+footer .footer .footer-divider {
+  width: 100%;
+  height: 0;
+  margin: 0;
+  border: 0;
+  border-top: var(--footer-divider-width) var(--footer-divider-style) var(--footer-divider-color);
+}
+
+/* ===== row 3: legal / bottom bar ===== */
+footer .footer .footer-legal .default-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--footer-legal-gap);
+}
+
+footer .footer .footer-legal p {
+  font-size: var(--footer-body-font-size);
+  font-weight: var(--footer-body-font-weight);
+  font-style: var(--footer-body-font-style);
+  line-height: var(--footer-body-line-height);
+  text-align: center;
+}
+
+footer .footer .footer-legal img {
+  width: var(--footer-nz-logo-width);
+  height: var(--footer-nz-logo-height);
+  object-fit: contain;
+}
+
+/* the legal-links paragraph holds Terms / Privacy / Cookies */
+footer .footer .footer-legal p:last-child {
+  display: flex;
+  gap: var(--footer-legal-gap);
+}
+
+/* ===== desktop layout ===== */
 @media (width >= 900px) {
   footer .footer > div {
-    padding: 40px 32px 24px;
+    padding: var(--footer-padding-y) var(--footer-padding-x) 0;
+  }
+
+  /* bottom row: NZ logo | copyright | legal links spread across the width */
+  footer .footer .footer-legal .default-content-wrapper {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  footer .footer .footer-legal p {
+    text-align: left;
   }
 }

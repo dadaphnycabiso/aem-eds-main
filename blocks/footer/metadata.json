@@ -1,0 +1,27 @@
+{
+  "variantName": "footer",
+  "blockType": "footer",
+  "description": "DOC dark-forest footer with a decorative Papatūānuku texture wash, centered brand logo, a row of primary navigation links, a divider, and a bottom bar with the NZ Government logo, copyright and legal links. Finished with a gold accent bar. Migrated from the DOC Figma design.",
+  "source": {
+    "type": "figma",
+    "fileKey": "RGpLq9Ox8K60cHwR7cJSBl",
+    "nodeId": "1772:95433",
+    "name": "Footer"
+  },
+  "characteristics": {
+    "purpose": "footer",
+    "colorScheme": "dark",
+    "density": "spacious",
+    "imagePattern": "large",
+    "contentPattern": {
+      "structure": "centered brand logo + primary link row + divider + NZ govt logo/copyright/legal links",
+      "buttonCount": 6,
+      "imageCount": 2
+    }
+  },
+  "usage": {
+    "pagesUsing": ["footer"],
+    "reuseCount": 1,
+    "lastUsed": "2026-08-10"
+  }
+}

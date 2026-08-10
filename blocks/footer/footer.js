@@ -11,7 +11,7 @@ function getDOCFooterHTML() {
   return `
     <div>
       <div class="default-content-wrapper">
-        <p><a href="/" aria-label="Department of Conservation home"><picture><img src="/content/images/footer/doc-logo-full.png" alt="Department of Conservation Te Papa Atawhai"></picture></a></p>
+        <p><a href="/" aria-label="Department of Conservation home"><picture><img src="/icons/doc-logo.svg" alt="Department of Conservation Te Papa Atawhai"></picture></a></p>
       </div>
     </div>
     <div>
@@ -28,7 +28,7 @@ function getDOCFooterHTML() {
     </div>
     <div>
       <div class="default-content-wrapper">
-        <p><picture><img src="/content/images/footer/nz-govt-logo.png" alt="Te Kāwanatanga o Aotearoa New Zealand Government"></picture></p>
+        <p><picture><img src="/icons/nz-govt-logo.svg" alt="Te Kāwanatanga o Aotearoa New Zealand Government"></picture></p>
         <p>© 2025 Department of Conservation. All rights reserved.</p>
         <p><a href="/terms">Terms</a> <a href="/privacy">Privacy</a> <a href="/cookies">Cookies</a></p>
       </div>

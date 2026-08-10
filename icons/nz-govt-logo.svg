@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 245 56" fill="none">
+  <g fill="white">
+    <!-- Crown / Shield simplified -->
+    <path d="M20 4c-1.5 0-2.8.6-3.8 1.6l-.7.8-.7-.8C13.8 4.6 12.5 4 11 4 8 4 5.5 6.5 5.5 9.5c0 5.5 8 12.5 10 14.2v.3h0v-.3c2-1.7 10-8.7 10-14.2C25.5 6.5 23 4 20 4z"/>
+    <circle cx="15.5" cy="30" r="3"/>
+    <rect x="12" y="34" width="7" height="10" rx="1"/>
+    <!-- Text: Te Kwanatanga o Aotearoa -->
+    <text x="38" y="22" font-family="sans-serif" font-size="13" font-weight="400" fill="white">Te Kwanatanga o Aotearoa</text>
+    <!-- Text: New Zealand Government -->
+    <text x="38" y="42" font-family="sans-serif" font-size="13" font-weight="700" fill="white">New Zealand Government</text>
+  </g>
+</svg>

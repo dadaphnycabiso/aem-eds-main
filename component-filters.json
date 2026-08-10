@@ -16,7 +16,8 @@
       "hero-welcome",
       "cards",
       "columns",
-      "fragment"
+      "fragment",
+      "quote"
     ]
   },
   {
@@ -38,20 +39,6 @@
       "image",
       "button",
       "title"
-    ]
-  },
-  {
-    "id": "section",
-    "components": [
-      "text",
-      "image",
-      "button",
-      "title",
-      "hero",
-      "hero-welcome",
-      "cards",
-      "columns",
-      "quote"
     ]
   }
 ]

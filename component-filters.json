@@ -13,6 +13,7 @@
       "button",
       "title",
       "hero",
+      "hero-welcome",
       "cards",
       "columns",
       "fragment"
@@ -47,6 +48,7 @@
       "button",
       "title",
       "hero",
+      "hero-welcome",
       "cards",
       "columns",
       "quote"

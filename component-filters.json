@@ -15,6 +15,7 @@
       "hero",
       "hero-welcome",
       "cards",
+      "cards-featured",
       "columns",
       "fragment",
       "quote"
@@ -24,6 +25,12 @@
     "id": "cards",
     "components": [
       "card"
+    ]
+  },
+  {
+    "id": "cards-featured",
+    "components": [
+      "cards-featured-item"
     ]
   },
   {

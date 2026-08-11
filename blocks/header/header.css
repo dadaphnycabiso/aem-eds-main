@@ -177,7 +177,8 @@ header nav .nav-sections li > p {
 }
 
 /* the top-level link stacks the bilingual label above the item name */
-header nav .nav-sections li > a {
+header nav .nav-sections li > a,
+header nav .nav-sections li > p > a {
   display: flex;
   flex-direction: column;
 }

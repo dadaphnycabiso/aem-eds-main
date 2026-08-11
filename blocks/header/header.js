@@ -215,14 +215,15 @@ export default async function decorate(block) {
     if (section) section.classList.add(`nav-${c}`);
   });
 
-  const navBrand = nav.querySelector('.nav-brand');
-  if (navBrand) {
-    const brandLink = navBrand.querySelector('.button');
-    if (brandLink) {
-      brandLink.className = '';
-      brandLink.closest('.button-container').className = '';
-    }
-  }
+  // Strip auto-applied button classes from all nav links — EDS's
+  // decorateButtons() marks standalone links as buttons, which
+  // conflicts with the nav's own styling.
+  nav.querySelectorAll('.button-container').forEach((bc) => { bc.className = ''; });
+  nav.querySelectorAll('.button').forEach((btn) => {
+    // Keep the login button styled as a button
+    const isLogin = btn.textContent.trim().toLowerCase().includes('log in');
+    if (!isLogin) btn.className = '';
+  });
 
   const navSections = nav.querySelector('.nav-sections');
   if (navSections) {
@@ -241,6 +242,11 @@ export default async function decorate(block) {
 
   const navTools = nav.querySelector('.nav-tools');
   if (navTools) {
+    // Re-apply button class to the login link after the blanket strip above
+    const loginLink = navTools.querySelector('a');
+    if (loginLink && loginLink.textContent.trim().toLowerCase().includes('log in')) {
+      loginLink.classList.add('button');
+    }
     decorateAbnBadge(navTools);
     decorateSearch(navTools);
   }

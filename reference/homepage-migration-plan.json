@@ -1,0 +1,23 @@
+{
+  "pageName": "homepage",
+  "pageTitle": "Homepage",
+  "fileKey": "RGpLq9Ox8K60cHwR7cJSBl",
+  "referencedNodeId": "1255:73313",
+  "referencedNodeName": "Navigation Bar (standard header)",
+  "notes": "Figma node referenced is the standard header. Homepage assembles the existing hero-welcome block plus the standard auto-loaded header/footer. No new blocks required.",
+  "chrome": {
+    "header": "standard EDS header block (auto-loaded via scripts.js loadHeader)",
+    "footer": "standard EDS footer block (auto-loaded via scripts.js loadFooter)"
+  },
+  "blocks": [
+    {
+      "order": 1,
+      "figmaName": "HeroBanners / Haere mai",
+      "blockType": "hero",
+      "variantName": "hero-welcome",
+      "status": "exists",
+      "note": "Already migrated from Figma node 1536:66360; reused as-is."
+    }
+  ],
+  "totalBlocks": 1
+}

@@ -3,7 +3,7 @@
     "aem-eds-main": {
       "previewOrg": "dadaphnycabiso",
       "previewSite": "aem-eds-main",
-      "baseUrl": "https://main--aem-eds-main--dadaphnycabiso.aem.page ",
+      "baseUrl": "https://main--aem-eds-main--dadaphnycabiso.aem.live",
       "aemSitePath": "/content/aem-eds-site",
       "aemAssetsFolderPath": "/content/dam/aem-eds-site",
       "aemSiteName": "aem-eds-site",

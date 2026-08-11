@@ -1,47 +1,101 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
+const IMAGE_EXT = /\.(png|jpe?g|gif|webp|avif|svg)(\?.*)?$/i;
+
 /**
- * Decorate the body cell of a card: category eyebrow, title, description and
- * optional keyword tags.
+ * Convert an image reference delivered as a plain text link (`<a href="…png">`)
+ * into an optimized <picture>. Returns the picture, or null if the cell holds
+ * no image.
  */
-function decorateBody(body) {
+function pictureFromCell(cell) {
+  const pic = cell.querySelector('picture');
+  if (pic) return pic;
+  const link = [...cell.querySelectorAll('a')]
+    .find((a) => IMAGE_EXT.test(a.getAttribute('href') || ''));
+  if (link) {
+    return createOptimizedPicture(link.getAttribute('href'), link.textContent.trim(), false, [{ width: '750' }]);
+  }
+  const img = cell.querySelector('img');
+  if (img) {
+    return createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
+  }
+  return null;
+}
+
+function categorySlug(text) {
+  return text.trim().toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+}
+
+/**
+ * Build a styled card body from the non-image cells of a card row.
+ * Handles two delivery shapes:
+ *   - AEM Universal Editor: one cell per field (category, title, description).
+ *   - document authoring: a single rich cell holding <p>/<h3>/<ul>.
+ */
+function buildBody(cells) {
+  const body = document.createElement('div');
   body.className = 'cards-featured-card-body';
 
-  // Category eyebrow = first paragraph (before any heading).
+  if (cells.length === 1) {
+    // Rich body cell: adopt its children and style by tag.
+    const cell = cells[0];
+    while (cell.firstElementChild) body.append(cell.firstElementChild);
+  } else {
+    // Field-per-cell: interpret by model order category / title / description.
+    const [catCell, titleCell, ...rest] = cells;
+    if (catCell && catCell.textContent.trim()) {
+      const p = document.createElement('p');
+      p.textContent = catCell.textContent.trim();
+      body.append(p);
+    }
+    if (titleCell && titleCell.textContent.trim()) {
+      const h3 = document.createElement('h3');
+      h3.textContent = titleCell.textContent.trim();
+      body.append(h3);
+    }
+    rest.forEach((cell) => {
+      // description (richtext) and any keyword-tag list
+      while (cell.firstElementChild) body.append(cell.firstElementChild);
+      const leftover = cell.textContent.trim();
+      if (!cell.childElementCount && leftover) {
+        const p = document.createElement('p');
+        p.textContent = leftover;
+        body.append(p);
+      }
+    });
+  }
+
+  // Category eyebrow = leading paragraph.
   const first = body.querySelector('p, h1, h2, h3, h4, h5, h6');
   if (first && first.tagName === 'P' && !first.previousElementSibling) {
     first.classList.add('cards-featured-category');
-    const slug = first.textContent.trim().toLowerCase()
-      .replace(/&/g, 'and')
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)/g, '');
+    const slug = categorySlug(first.textContent);
     if (slug) first.classList.add(`cat-${slug}`);
   }
 
-  // Titles (any heading level authored inside the card).
   body.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach((h) => {
     h.classList.add('cards-featured-title');
   });
 
-  // Description paragraphs (everything that isn't the category).
   body.querySelectorAll('p').forEach((p) => {
     if (!p.classList.contains('cards-featured-category')) {
       p.classList.add('cards-featured-body');
     }
   });
 
-  // Keyword tags authored as a bullet list.
   const tags = body.querySelector('ul');
   if (tags) tags.classList.add('cards-featured-tags');
+
+  return body;
 }
 
 export default function decorate(block) {
   const rows = [...block.children];
   block.textContent = '';
-
-  const header = document.createElement('div');
-  header.className = 'cards-featured-header';
 
   const grid = document.createElement('div');
   grid.className = 'cards-featured-grid';
@@ -52,43 +106,26 @@ export default function decorate(block) {
   const list = document.createElement('ul');
   list.className = 'cards-featured-list';
 
-  let cardIndex = 0;
-
-  rows.forEach((row) => {
-    const hasImage = !!row.querySelector('picture');
-
-    // A leading text-only row is the section header (eyebrow + heading).
-    if (!hasImage && cardIndex === 0 && !featuredWrap.hasChildNodes()) {
-      while (row.firstElementChild) {
-        const cell = row.firstElementChild;
-        while (cell.firstElementChild) header.append(cell.firstElementChild);
-        cell.remove();
-      }
-      // Style the header eyebrow / heading.
-      const firstP = header.querySelector('p');
-      if (firstP && firstP.tagName === 'P' && !firstP.previousElementSibling) {
-        firstP.classList.add('cards-featured-eyebrow');
-      }
-      header.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach((h) => {
-        h.classList.add('cards-featured-heading');
-      });
-      return;
-    }
+  rows.forEach((row, index) => {
+    const cells = [...row.children];
 
     const card = document.createElement('div');
     card.className = 'cards-featured-card';
     moveInstrumentation(row, card);
 
-    [...row.children].forEach((div) => {
-      if (div.children.length === 1 && div.querySelector('picture')) {
-        div.className = 'cards-featured-card-image';
-      } else {
-        decorateBody(div);
-      }
-      card.append(div);
-    });
+    // Image cell (delivered as picture or as an image link).
+    const imageCell = cells.find((c) => pictureFromCell(c));
+    if (imageCell) {
+      const imageDiv = document.createElement('div');
+      imageDiv.className = 'cards-featured-card-image';
+      imageDiv.append(pictureFromCell(imageCell));
+      card.append(imageDiv);
+    }
 
-    if (cardIndex === 0) {
+    const bodyCells = cells.filter((c) => c !== imageCell);
+    if (bodyCells.length) card.append(buildBody(bodyCells));
+
+    if (index === 0) {
       card.classList.add('is-featured');
       featuredWrap.append(card);
     } else {
@@ -96,18 +133,8 @@ export default function decorate(block) {
       li.append(card);
       list.append(li);
     }
-    cardIndex += 1;
   });
 
-  // Optimize pictures.
-  [...featuredWrap.querySelectorAll('picture > img'), ...list.querySelectorAll('picture > img')]
-    .forEach((img) => {
-      const optimizedPic = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
-      moveInstrumentation(img, optimizedPic.querySelector('img'));
-      img.closest('picture').replaceWith(optimizedPic);
-    });
-
-  if (header.hasChildNodes()) block.append(header);
   if (featuredWrap.hasChildNodes()) grid.append(featuredWrap);
   if (list.hasChildNodes()) grid.append(list);
   block.append(grid);

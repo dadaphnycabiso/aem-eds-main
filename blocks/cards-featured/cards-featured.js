@@ -114,15 +114,35 @@ export default function decorate(block) {
     moveInstrumentation(row, card);
 
     // Image cell (delivered as picture or as an image link).
-    const imageCell = cells.find((c) => pictureFromCell(c));
-    if (imageCell) {
+    const consumed = [];
+    const imageIndex = cells.findIndex((c) => pictureFromCell(c));
+    if (imageIndex !== -1) {
+      const imageCell = cells[imageIndex];
+      consumed.push(imageCell);
+      const picture = pictureFromCell(imageCell);
+
+      // Field-per-row (Universal Editor) delivers the image as a link followed
+      // by a dedicated alt-text cell; markup delivery ships a <picture> that
+      // already carries its alt and no separate cell. Consume the alt cell so
+      // it is not mistaken for the category eyebrow.
+      if (!imageCell.querySelector('picture')) {
+        const altCell = cells[imageIndex + 1];
+        if (altCell && !pictureFromCell(altCell)
+          && !altCell.querySelector('h1, h2, h3, h4, h5, h6, ul, ol')) {
+          consumed.push(altCell);
+          const altText = altCell.textContent.trim();
+          const img = picture.querySelector('img');
+          if (altText && img) img.alt = altText;
+        }
+      }
+
       const imageDiv = document.createElement('div');
       imageDiv.className = 'cards-featured-card-image';
-      imageDiv.append(pictureFromCell(imageCell));
+      imageDiv.append(picture);
       card.append(imageDiv);
     }
 
-    const bodyCells = cells.filter((c) => c !== imageCell);
+    const bodyCells = cells.filter((c) => !consumed.includes(c));
     if (bodyCells.length) card.append(buildBody(bodyCells));
 
     if (index === 0) {

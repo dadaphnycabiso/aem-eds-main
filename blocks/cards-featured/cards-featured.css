@@ -150,8 +150,12 @@
 .cards-featured .cards-featured-featured .cards-featured-card-body {
   display: flex;
   flex-direction: column;
-  gap: var(--cards-featured-featured-content-gap);
   padding-top: var(--cards-featured-featured-content-gap);
+}
+
+/* Featured card: title -> description is 8px (Figma), category -> title 4px */
+.cards-featured .cards-featured-featured .cards-featured-title {
+  margin-bottom: var(--cards-featured-featured-content-gap);
 }
 
 /* ===== LIST (right) ===== */
@@ -196,7 +200,7 @@
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  gap: var(--cards-featured-list-content-gap);
+  justify-content: center;
 }
 
 /* Clamp list description to two lines to match the Figma truncation */

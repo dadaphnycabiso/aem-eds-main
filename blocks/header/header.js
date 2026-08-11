@@ -155,6 +155,32 @@ function decorateSearch(navTools) {
 }
 
 /**
+ * Fixes broken nav images by falling back to repo-hosted SVGs.
+ * AEM-authored content may reference DAM paths that don't resolve on EDS.
+ */
+function fixBrokenImages(nav) {
+  const fallbacks = {
+    'doc-logo': '/icons/doc-logo.svg',
+    'department of conservation': '/icons/doc-logo.svg',
+    'te papa atawhai': '/icons/doc-logo.svg',
+    'abn-badge': '/icons/abn-badge.svg',
+    'always be naturing': '/icons/abn-badge.svg',
+    naturing: '/icons/abn-badge.svg',
+  };
+
+  nav.querySelectorAll('img').forEach((img) => {
+    const alt = (img.alt || '').toLowerCase();
+    const src = (img.src || '').toLowerCase();
+    const broken = !img.naturalWidth || src.includes('about:error') || src.includes('about:blank');
+
+    if (!broken) return;
+
+    const match = Object.keys(fallbacks).find((k) => alt.includes(k) || src.includes(k));
+    if (match) img.src = fallbacks[match];
+  });
+}
+
+/**
  * Marks the ABN badge image wrapper so it can be styled/positioned.
  * @param {Element} navTools The nav tools container
  */
@@ -180,6 +206,8 @@ export default async function decorate(block) {
   const nav = document.createElement('nav');
   nav.id = 'nav';
   while (fragment.firstElementChild) nav.append(fragment.firstElementChild);
+
+  fixBrokenImages(nav);
 
   const classes = ['brand', 'sections', 'tools'];
   classes.forEach((c, i) => {

@@ -34,9 +34,10 @@
   },
   "usage": {
     "pagesUsing": [
-      "featured-updates"
+      "featured-updates",
+      "index"
     ],
-    "reuseCount": 1,
-    "lastUsed": "2026-08-10T00:00:00.000Z"
+    "reuseCount": 2,
+    "lastUsed": "2026-08-11T00:00:00.000Z"
   }
 }

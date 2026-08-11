@@ -59,56 +59,12 @@ async function loadFonts() {
 }
 
 /**
- * Returns true when the page still carries old AEM boilerplate content
- * that should be replaced with DOC-designed components.
- */
-function isBoilerplatePage(main) {
-  const h1 = main.querySelector('h1');
-  return h1 && h1.textContent.includes('AEM');
-}
-
-/**
- * Injects a cards-featured block after the hero section as a fallback
- * when AEM content is unavailable.
- */
-function buildFeaturedUpdates(main) {
-  if (!isBoilerplatePage(main)) return;
-
-  const heroSection = main.querySelector('.hero')?.closest('div');
-  if (!heroSection) return;
-
-  const section = document.createElement('div');
-  section.innerHTML = `
-    <div class="cards-featured block" data-block-name="cards-featured" data-block-status="initialized">
-      <div><div><p>Subheading</p><h2>Featured updates</h2></div></div>
-      <div>
-        <div><picture><img src="/images/hero-welcome-bg.png" alt="Wildlife in New Zealand"></picture></div>
-        <div><p>Wildlife health</p><h3>Avian influenza</h3><p>DOC is closely monitoring the avian influenza situation and working to protect native bird populations across New Zealand.</p></div>
-      </div>
-      <div>
-        <div><picture><img src="/images/hero-welcome-bg.png" alt="Hahei Shore"></picture></div>
-        <div><p>News</p><h3>Hahei Shoreline Update</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
-      </div>
-      <div>
-        <div><picture><img src="/images/hero-welcome-bg.png" alt="Aoraki Mt Cook"></picture></div>
-        <div><p>Blog</p><h3>Aoraki/Mount Cook</h3><p>The eagerly anticipated trail reopening has been confirmed for this season.</p></div>
-      </div>
-      <div>
-        <div><picture><img src="/images/hero-welcome-bg.png" alt="Kokako bird"></picture></div>
-        <div><p>Event</p><h3>Kōkako Recovery</h3><p>Alan Saunders was a leading figure in the kōkako recovery programme.</p></div>
-      </div>
-    </div>`;
-
-  heroSection.after(section);
-}
-
-/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
-function buildAutoBlocks(main) {
+function buildAutoBlocks() {
   try {
-    buildFeaturedUpdates(main);
+    // TODO: add auto block, if needed
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);

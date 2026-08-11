@@ -166,68 +166,6 @@ function decorateAbnBadge(navTools) {
 }
 
 /**
- * Returns the DOC navigation HTML structure matching the Figma design.
- * Used as fallback when AEM nav content is unavailable or outdated.
- */
-function getDOCNavHTML() {
-  return `
-    <div>
-      <div class="default-content-wrapper">
-        <p><a href="/"><picture><img src="/icons/doc-logo.svg" alt="Department of Conservation - Te Papa Atawhai"></picture></a></p>
-      </div>
-    </div>
-    <div>
-      <div class="default-content-wrapper">
-        <ul>
-          <li><a href="/things-to-do">Te Reo | Things to Do</a>
-            <ul>
-              <li><a href="/walks-and-hikes">Walks &amp; Hikes</a></li>
-              <li><a href="/camping">Camping</a></li>
-              <li><a href="/fishing">Fishing</a></li>
-            </ul>
-          </li>
-          <li><a href="/places-to-go">Te Reo | Places to Go</a>
-            <ul>
-              <li><a href="/national-parks">National Parks</a></li>
-              <li><a href="/marine-reserves">Marine Reserves</a></li>
-              <li><a href="/conservation-parks">Conservation Parks</a></li>
-            </ul>
-          </li>
-          <li><a href="/conservation">Te Reo | Conservation</a>
-            <ul>
-              <li><a href="/native-animals">Native Animals</a></li>
-              <li><a href="/native-plants">Native Plants</a></li>
-              <li><a href="/threats-and-impacts">Threats &amp; Impacts</a></li>
-            </ul>
-          </li>
-          <li><a href="/get-involved">Te Reo | Get Involved</a>
-            <ul>
-              <li><a href="/volunteer">Volunteer</a></li>
-              <li><a href="/donate">Donate</a></li>
-              <li><a href="/events">Events</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div>
-      <div class="default-content-wrapper">
-        <p><picture><img src="/icons/abn-badge.svg" alt="Always Be Naturing"></picture></p>
-    <p><span class="icon icon-search"></span></p>
-    <p class="button-container"><a href="/login" class="button"><span class="icon icon-user"></span> Log In</a></p>
-      </div>
-    </div>`;
-}
-
-/**
- * Checks if loaded nav fragment has the expected DOC structure.
- */
-function isDOCNav(fragment) {
-  const firstImg = fragment.querySelector('img');
-  return firstImg && firstImg.src && firstImg.src.includes('doc-logo');
-}
-
-/**
  * loads and decorates the header, mainly the nav
  * @param {Element} block The header block element
  */
@@ -235,14 +173,7 @@ export default async function decorate(block) {
   // load nav as fragment
   const navMeta = getMetadata('nav');
   const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
-  let fragment = await loadFragment(navPath);
-
-  // Use DOC nav fallback if AEM content doesn't have expected structure
-  if (!isDOCNav(fragment)) {
-    const temp = document.createElement('main');
-    temp.innerHTML = getDOCNavHTML();
-    fragment = temp;
-  }
+  const fragment = await loadFragment(navPath);
 
   // decorate nav DOM
   block.textContent = '';
@@ -282,14 +213,6 @@ export default async function decorate(block) {
 
   const navTools = nav.querySelector('.nav-tools');
   if (navTools) {
-    // Strip duplicate <img> inside icon spans — AEM content may ship
-    // pre-rendered icons and decorateIcons() unconditionally appends another.
-    nav.querySelectorAll('span.icon').forEach((icon) => {
-      const imgs = icon.querySelectorAll('img');
-      if (imgs.length > 1) {
-        [...imgs].slice(1).forEach((img) => img.remove());
-      }
-    });
     decorateAbnBadge(navTools);
     decorateSearch(navTools);
   }

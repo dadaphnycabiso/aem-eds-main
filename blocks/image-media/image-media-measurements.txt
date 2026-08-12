@@ -1,0 +1,77 @@
+VISUAL MEASUREMENT CHECKLIST FOR image-media
+================================================
+Extracted from Figma node: 1349:27117 (Media) — children 1308:26043, 1349:27118, 1375:35829
+Date: 2026-08-12
+
+NOTE: The component is image-only per requirements. The gradient overlay and
+"Image Name" label seen in the Figma frames are the design system's EMPTY-STATE
+placeholder for the image reference field — they are NOT part of the delivered
+block, which contains only the author's image.
+
+LAYOUT & DIMENSIONS
+☑ Container width: 400px design frame width (source: Ratio frames all width="400")
+☑ Container height: varies by ratio (source: 4:3=300, 8:5=250, 1:1=400)
+☑ Container padding: top 0 right 0 bottom 0 left 0 (source: image sits flush in frame, no padding)
+☑ Grid/Flex gap: 0px (source: single image, no gap)
+☑ Column count: 1 (source: single image element)
+☑ Item width: 100% of container (source: img fills frame width)
+☑ Item height: derived from aspect-ratio (source: frame ratios)
+
+ASPECT RATIOS (the 3 authorable variations)
+☑ Ratio 4:3 -> 4 / 3 (source: frame 1308:26043 400x300)
+☑ Ratio 8:5 -> 8 / 5 (source: frame 1349:27118 400x250)
+☑ Ratio 1:1 -> 1 / 1 (source: frame 1375:35829 "Ratio=Custom" 400x400, labelled 1:1 in design header)
+
+SPACING (EXACT PIXELS)
+☑ Section padding: 0px (source: no section padding on the media frame)
+☑ Item internal padding: 0px 0px 0px 0px (source: image flush to frame)
+☑ Gap between items: 0px (source: single image)
+☑ Margin between text elements: N/A (source: no text in delivered block)
+☑ Image margin/padding: 0px (source: image flush to frame)
+
+COLORS (EXACT HEX + OPACITY)
+☑ Background color: transparent (opacity: 0%) (source: no fill on image container; placeholder gradient excluded)
+☑ Primary text color: N/A (source: no text in delivered block)
+☑ Secondary text color: N/A (source: no text)
+☑ Accent/link color: N/A (source: no links)
+☑ Border color: N/A (opacity: 0%) (source: no border on image, only rounded corners)
+☑ Hover background: N/A (source: no hover state in design)
+☑ Hover text color: N/A (source: no text)
+
+TYPOGRAPHY (ALL PROPERTIES)
+☑ Heading font-family: N/A (source: no text in delivered block)
+☑ Heading font-size: N/A (source: no text)
+☑ Heading font-weight: N/A (source: no text)
+☑ Heading line-height: N/A (source: no text)
+☑ Heading letter-spacing: N/A (source: no text)
+☑ Heading text-transform: none (source: no text)
+☑ Heading font-style: normal (source: no text)
+☑ Body font-family: N/A (source: no text)
+☑ Body font-size: N/A (source: no text)
+☑ Body font-weight: N/A (source: no text)
+☑ Body line-height: N/A (source: no text)
+☑ Body letter-spacing: N/A (source: no text)
+☑ Body font-style: normal (source: no text)
+
+BORDERS & RADIUS (CRITICAL - DO NOT ASSUME)
+☑ Border width: 0px (source: no border/stroke on the image frames)
+☑ Border style: none (source: no stroke in design context)
+☑ Border color: N/A (source: no border present)
+☑ Border radius: 12px (source: get_design_context "rounded-[12px]" on Ratio=4:3, matches rounded-* token scale)
+
+SHADOWS (EXACT VALUES)
+☑ Box-shadow offset-x: 0px (source: no shadow on image frames)
+☑ Box-shadow offset-y: 0px (source: no shadow)
+☑ Box-shadow blur: 0px (source: no shadow)
+☑ Box-shadow spread: 0px (source: no shadow)
+☑ Box-shadow color: rgba(0,0,0,0) (source: no shadow in design)
+
+EFFECTS & TRANSITIONS
+☑ Hover transform: none (source: no interaction in design)
+☑ Transition duration: 0ms (source: no transition in design)
+☑ Transition timing: N/A (source: no transition)
+☑ Opacity changes: none (source: no opacity change)
+
+OBJECT FIT
+☑ object-fit: cover (source: img fills fixed-ratio frame, cropping to fill — standard for ratio-locked media)
+☑ object-position: center (source: image centered in frame)

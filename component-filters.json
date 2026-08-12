@@ -18,19 +18,20 @@
       "cards-featured",
       "columns",
       "fragment",
-      "quote"
-    ]
-  },
-  {
-    "id": "cards",
-    "components": [
-      "card"
+      "quote",
+      "image-media"
     ]
   },
   {
     "id": "cards-featured",
     "components": [
       "cards-featured-item"
+    ]
+  },
+  {
+    "id": "cards",
+    "components": [
+      "card"
     ]
   },
   {

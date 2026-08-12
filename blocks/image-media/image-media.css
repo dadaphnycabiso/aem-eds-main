@@ -1,0 +1,58 @@
+/* Import component-specific tokens */
+@import url('./image-media-tokens.css');
+
+/* image-media block styles */
+
+.image-media {
+  display: block;
+  max-width: var(--image-media-max-width);
+  padding: var(--image-media-padding);
+  background: var(--image-media-background);
+}
+
+.image-media .image-media-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--image-media-ratio-default);
+  overflow: hidden;
+  border-radius: var(--image-media-border-radius);
+  border-width: var(--image-media-border-width);
+  border-style: var(--image-media-border-style);
+  box-shadow: var(--image-media-shadow);
+}
+
+.image-media .image-media-frame picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.image-media .image-media-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: var(--image-media-object-fit);
+  object-position: var(--image-media-object-position);
+}
+
+/* ===== Aspect-ratio variations (author-selected via block classes) ===== */
+
+.image-media.image-media-4-3 .image-media-frame {
+  aspect-ratio: var(--image-media-ratio-4-3);
+}
+
+.image-media.image-media-8-5 .image-media-frame {
+  aspect-ratio: var(--image-media-ratio-8-5);
+}
+
+.image-media.image-media-1-1 .image-media-frame {
+  aspect-ratio: var(--image-media-ratio-1-1);
+}
+
+/* ===== Responsive: image is fluid; aspect-ratio keeps it proportional
+   from desktop down to mobile without any fixed dimensions. ===== */
+@media (width <= 600px) {
+  .image-media .image-media-frame {
+    border-radius: var(--image-media-border-radius);
+  }
+}

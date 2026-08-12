@@ -48,9 +48,13 @@
         "button",
         "title",
         "hero",
+        "hero-welcome",
         "cards",
+        "cards-featured",
         "columns",
-        "fragment"
+        "fragment",
+        "quote",
+        "image-media"
       ]
     }
   ]

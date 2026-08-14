@@ -81,14 +81,35 @@ const BUTTON_VARIATION_CLASSES = [
 ];
 
 /**
- * Mirror button variation classes from the enclosing `.button-container` onto
- * its `a.button`. The OOTB image/button decoration keeps container classes but
- * strips extra classes off the anchor, so this runs AFTER decorateButtons().
- * Keeps the Button a core default-content component (no block, no core changes).
+ * Capture existing button variation classes from <a> elements BEFORE
+ * decorateButtons() resets them. The XWalk delivery pipeline applies the
+ * linkType value as a class on the <a>, but decorateButtons() in aem.js
+ * unconditionally sets a.className = 'button', wiping it out.
+ * @param {Element} element container element
+ */
+function captureButtonVariations(element) {
+  element.querySelectorAll('a').forEach((a) => {
+    const saved = BUTTON_VARIATION_CLASSES.filter((cls) => a.classList.contains(cls));
+    if (saved.length) {
+      a.dataset.btnVariations = saved.join(' ');
+    }
+  });
+}
+
+/**
+ * Restore captured button variation classes and also mirror any variation
+ * classes found on the .button-container onto the a.button.
+ * Runs AFTER decorateButtons().
  * @param {Element} element container element
  */
 export function decorateButtonVariations(element) {
   element.querySelectorAll('a.button').forEach((a) => {
+    // Restore classes that were on the <a> before decorateButtons() stripped them
+    if (a.dataset.btnVariations) {
+      a.dataset.btnVariations.split(' ').forEach((cls) => a.classList.add(cls));
+      delete a.dataset.btnVariations;
+    }
+    // Also check the container for classes (size/shape delivered there)
     const container = a.closest('.button-container');
     if (!container) return;
     BUTTON_VARIATION_CLASSES.forEach((cls) => {
@@ -102,7 +123,7 @@ export function decorateButtonVariations(element) {
  * @param {Element} main The main element
  */
 export function decorateMain(main) {
-  // hopefully forward compatible button decoration
+  captureButtonVariations(main);
   decorateButtons(main);
   decorateButtonVariations(main);
   decorateIcons(main);

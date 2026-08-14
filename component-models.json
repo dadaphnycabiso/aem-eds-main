@@ -131,19 +131,72 @@
       {
         "component": "select",
         "name": "linkType",
-        "label": "Type",
+        "label": "Style",
+        "value": "primary",
         "options": [
           {
-            "name": "default",
-            "value": ""
-          },
-          {
-            "name": "primary",
+            "name": "Primary",
             "value": "primary"
           },
           {
-            "name": "secondary",
+            "name": "Secondary",
             "value": "secondary"
+          },
+          {
+            "name": "Outline",
+            "value": "outline"
+          },
+          {
+            "name": "Ghost",
+            "value": "ghost"
+          },
+          {
+            "name": "Ghost Inverted",
+            "value": "ghost-inverted"
+          },
+          {
+            "name": "Destructive",
+            "value": "destructive"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "classes_size",
+        "label": "Size",
+        "value": "",
+        "options": [
+          {
+            "name": "Regular",
+            "value": ""
+          },
+          {
+            "name": "Small",
+            "value": "button-small"
+          },
+          {
+            "name": "Mini",
+            "value": "button-mini"
+          },
+          {
+            "name": "Round",
+            "value": "button-round"
+          }
+        ]
+      },
+      {
+        "component": "select",
+        "name": "classes_shape",
+        "label": "Shape",
+        "value": "",
+        "options": [
+          {
+            "name": "Rounded",
+            "value": ""
+          },
+          {
+            "name": "Square",
+            "value": "button-square"
           }
         ]
       }

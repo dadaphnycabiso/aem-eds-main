@@ -1,4 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
+import { moveInstrumentation } from '../../scripts/scripts.js';
 
 const IMAGE_EXT = /\.(png|jpe?g|gif|webp|avif|svg)(\?.*)?$/i;
 
@@ -26,11 +27,11 @@ function pictureFromCell(cell) {
 }
 
 /**
- * Image Media block — an image-only component built on top of the OOTB image
- * (asset-picker reference + alt text + createOptimizedPicture optimization).
- * The aspect ratio (4:3, 8:5, 1:1) is chosen by the author via the block's
- * "classes" model field, which lands as a modifier class on the block element
- * (e.g. `image-media image-media-4-3`) and is handled purely in CSS.
+ * Image block — the OOTB image component (asset-picker reference + alt text +
+ * createOptimizedPicture optimization) extended with:
+ *   - an author-selectable aspect ratio (4:3, 8:5, 1:1), applied as a modifier
+ *     class on the block element and handled purely in CSS;
+ *   - an optional "Image Name / Caption" overlaid on the bottom of the frame.
  */
 export default function decorate(block) {
   const cells = [...block.querySelectorAll(':scope > div > div')];
@@ -47,6 +48,7 @@ export default function decorate(block) {
   const imageCell = cells[imageIndex];
   const picture = pictureFromCell(imageCell);
   const img = picture.querySelector('img');
+  const consumed = [imageCell];
 
   // Universal Editor delivers the image as a link followed by a dedicated
   // alt-text cell; published delivery ships a <picture> that already carries
@@ -54,14 +56,31 @@ export default function decorate(block) {
   if (img && !imageCell.querySelector('picture')) {
     const altCell = cells[imageIndex + 1];
     if (altCell && !pictureFromCell(altCell)) {
+      consumed.push(altCell);
       const altText = altCell.textContent.trim();
       if (altText) img.alt = altText;
     }
   }
 
-  const figure = document.createElement('div');
-  figure.className = 'image-media-frame';
-  figure.append(picture);
+  const frame = document.createElement('div');
+  frame.className = 'image-frame';
+  frame.append(picture);
+
+  const figure = document.createElement('figure');
+  figure.className = 'image-figure';
+  moveInstrumentation(block, figure);
+  figure.append(frame);
+
+  // The first remaining non-empty text cell is the optional caption.
+  const captionCell = cells.find((c) => !consumed.includes(c) && c.textContent.trim());
+  const captionText = captionCell ? captionCell.textContent.trim() : '';
+  if (captionText) {
+    const caption = document.createElement('figcaption');
+    caption.className = 'image-caption';
+    caption.textContent = captionText;
+    // figcaption must be a direct child of figure; overlaid via CSS.
+    figure.append(caption);
+  }
 
   block.textContent = '';
   block.append(figure);

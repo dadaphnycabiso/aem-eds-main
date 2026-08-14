@@ -1,0 +1,82 @@
+/* Import component-specific design tokens */
+@import url('./image-tokens.css');
+
+/* Image block — OOTB image extended with author-selectable aspect ratio,
+   a 12px rounded frame and an optional overlay caption. */
+
+.image {
+  display: block;
+  max-width: var(--image-max-width);
+  padding: var(--image-padding);
+}
+
+.image .image-figure {
+  position: relative;
+  margin: 0;
+}
+
+.image .image-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--image-ratio-default);
+  overflow: hidden;
+  border-radius: var(--image-border-radius);
+  background: var(--image-background);
+}
+
+.image .image-frame picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.image .image-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: var(--image-object-fit);
+  object-position: var(--image-object-position);
+}
+
+/* ===== Optional overlay caption ("Image Name") ===== */
+
+/* Gradient scrim behind the caption for legibility over any image.
+   Lives inside the frame so the rounded corners clip it. */
+.image .image-figure:has(.image-caption) .image-frame::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: var(--image-caption-scrim-height);
+  background: var(--image-caption-scrim);
+  pointer-events: none;
+}
+
+.image .image-caption {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  margin: 0;
+  padding: var(--image-caption-padding);
+  font-family: var(--image-caption-font-family);
+  font-size: var(--image-caption-font-size);
+  font-weight: var(--image-caption-font-weight);
+  line-height: var(--image-caption-line-height);
+  color: var(--image-caption-color);
+}
+
+/* ===== Aspect-ratio variations (author-selected via block classes) ===== */
+.image.image-4-3 .image-frame {
+  aspect-ratio: var(--image-ratio-4-3);
+}
+
+.image.image-8-5 .image-frame {
+  aspect-ratio: var(--image-ratio-8-5);
+}
+
+.image.image-1-1 .image-frame {
+  aspect-ratio: var(--image-ratio-1-1);
+}

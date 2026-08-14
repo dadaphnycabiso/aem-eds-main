@@ -1,0 +1,36 @@
+/* blocks/image/image-tokens.css */
+
+/* Design tokens extracted from Figma node 1349:27117 (Media / Image component)
+   file RGpLq9Ox8K60cHwR7cJSBl. */
+
+.image {
+  /* ===== LAYOUT & DIMENSIONS ===== */
+  --image-max-width: 100%;
+  --image-padding: 0;
+
+  /* ===== ASPECT RATIOS (the 3 authorable variations) ===== */
+  --image-ratio-4-3: 4 / 3;
+  --image-ratio-8-5: 8 / 5;
+  --image-ratio-1-1: 1 / 1;
+
+  /* Default ratio when no variation class is selected */
+  --image-ratio-default: 4 / 3;
+
+  /* ===== IMAGE FRAME ===== */
+  --image-border-radius: 12px;      /* rounded-[12px] from Figma */
+  --image-object-fit: cover;
+  --image-object-position: center;
+  --image-background: transparent;
+
+  /* ===== CAPTION (overlay "Image Name") ===== */
+  --image-caption-font-family: 'Clear Sans', clear-sans-fallback, sans-serif;
+  --image-caption-font-size: 16px;      /* Tokens/Font Size/16 */
+  --image-caption-line-height: 24px;    /* Tokens/Line Height/24 */
+  --image-caption-font-weight: 700;     /* Weight | Style/700 (Bold) */
+  --image-caption-color: #fafaf9;       /* text/primary-inverse */
+  --image-caption-padding: 16px;        /* spacing/4 */
+
+  /* Scrim so the overlay caption stays legible over any image */
+  --image-caption-scrim: linear-gradient(180deg, rgb(0 0 0 / 0%) 0%, rgb(0 0 0 / 60%) 100%);
+  --image-caption-scrim-height: 50%;
+}

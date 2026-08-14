@@ -11,9 +11,6 @@
           "...": "./_title.json#/definitions"
         },
         {
-          "...": "./_image.json#/definitions"
-        },
-        {
           "...": "./_button.json#/definitions"
         }
       ]
@@ -31,6 +28,9 @@
       "title": "Blocks",
       "id": "blocks",
       "components": [
+        {
+          "...": "./_image.json#/definitions"
+        },
         {
           "...": "../blocks/*/_*.json#/definitions"
         }

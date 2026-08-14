@@ -28,14 +28,44 @@
     "fields": [
       {
         "component": "reference",
+        "valueType": "string",
         "name": "image",
         "label": "Image",
         "multi": false
       },
       {
         "component": "text",
+        "valueType": "string",
         "name": "imageAlt",
-        "label": "Alt Text"
+        "label": "Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "caption",
+        "label": "Image Name / Caption",
+        "value": ""
+      },
+      {
+        "component": "select",
+        "name": "classes",
+        "label": "Aspect Ratio",
+        "value": "image-4-3",
+        "options": [
+          {
+            "name": "4:3",
+            "value": "image-4-3"
+          },
+          {
+            "name": "8:5",
+            "value": "image-8-5"
+          },
+          {
+            "name": "1:1",
+            "value": "image-1-1"
+          }
+        ]
       }
     ]
   },
@@ -299,45 +329,6 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "image-media",
-    "fields": [
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Alt Text",
-        "value": ""
-      },
-      {
-        "component": "select",
-        "name": "classes",
-        "label": "Aspect Ratio",
-        "value": "image-media-4-3",
-        "options": [
-          {
-            "name": "4:3",
-            "value": "image-media-4-3"
-          },
-          {
-            "name": "8:5",
-            "value": "image-media-8-5"
-          },
-          {
-            "name": "1:1",
-            "value": "image-media-1-1"
-          }
-        ]
       }
     ]
   },

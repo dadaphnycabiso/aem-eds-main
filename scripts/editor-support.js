@@ -9,7 +9,7 @@ import {
   loadSections,
 } from './aem.js';
 import { decorateRichtext } from './editor-support-rte.js';
-import { decorateMain, decorateButtonVariations } from './scripts.js';
+import { decorateMain } from './scripts.js';
 
 // Capture helper imported alongside decorateButtonVariations
 function captureAndDecorateButtons(element) {

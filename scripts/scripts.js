@@ -122,10 +122,10 @@ export function decorateButtonVariations(element) {
  * Decorates the main element.
  * @param {Element} main The main element
  */
+// eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   captureButtonVariations(main);
   decorateButtons(main);
-  decorateButtonVariations(main);
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);

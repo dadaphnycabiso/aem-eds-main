@@ -120,43 +120,47 @@
       },
       {
         "component": "text",
+        "valueType": "string",
         "name": "linkText",
-        "label": "Text"
+        "label": "Text",
+        "value": ""
       },
       {
         "component": "text",
+        "valueType": "string",
         "name": "linkTitle",
-        "label": "Title"
+        "label": "Title",
+        "value": ""
       },
       {
         "component": "select",
-        "name": "linkType",
+        "name": "classes_color",
         "label": "Style",
-        "value": "primary",
+        "value": "button-primary",
         "options": [
           {
             "name": "Primary",
-            "value": "primary"
+            "value": "button-primary"
           },
           {
             "name": "Secondary",
-            "value": "secondary"
+            "value": "button-secondary"
           },
           {
             "name": "Outline",
-            "value": "outline"
+            "value": "button-outline"
           },
           {
             "name": "Ghost",
-            "value": "ghost"
+            "value": "button-ghost"
           },
           {
             "name": "Ghost Inverted",
-            "value": "ghost-inverted"
+            "value": "button-ghost-inverted"
           },
           {
             "name": "Destructive",
-            "value": "destructive"
+            "value": "button-destructive"
           }
         ]
       },

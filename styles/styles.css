@@ -243,12 +243,12 @@ a:hover {
   text-decoration: underline;
 }
 
-/* ===== Buttons =====
-   Reusable, token-driven button system extracted from the Figma design system.
-   Applies to authored default-content buttons (a.button) and native <button>.
-   Color variant: .primary | .secondary | .outline | .ghost | .ghost-inverted | .destructive
-   Size:          (default) | .button-small | .button-mini
-   Shape:         (default rounded) | .button-round (pill) | .button-square */
+/* ===== Buttons (base) =====
+   Token-driven base button used by inline rich-text links (a.button) and native
+   <button>. Only the base look plus primary/secondary aliases live here, since
+   inline links can only signal those two via <strong>/<em>. The full variation
+   matrix (6 colors x 4 sizes x 2 shapes) is delivered by the Button block and
+   styled in blocks/button/button.css. Design tokens are defined in :root above. */
 
 a.button:any-link,
 button {
@@ -308,9 +308,10 @@ a.button[aria-disabled="true"] {
   pointer-events: none;
 }
 
-/* ----- Color variants ----- */
-
-/* Primary (explicit, matches default) */
+/* Inline rich-text buttons: the boilerplate wraps a link in <strong>/<em> to
+   signal primary/secondary. The full color/size/shape variation matrix lives
+   in the Button block (blocks/button/button.css); these two aliases keep inline
+   authored links working. */
 a.button.primary,
 button.primary {
   background-color: var(--button-primary-bg);
@@ -323,7 +324,6 @@ button.primary:hover { background-color: var(--button-primary-bg-hover); }
 a.button.primary:active,
 button.primary:active { background-color: var(--button-primary-bg-active); }
 
-/* Secondary */
 a.button.secondary,
 button.secondary {
   background-color: var(--button-secondary-bg);
@@ -335,101 +335,6 @@ button.secondary:hover { background-color: var(--button-secondary-bg-hover); }
 
 a.button.secondary:active,
 button.secondary:active { background-color: var(--button-secondary-bg-active); }
-
-/* Outline */
-a.button.outline,
-button.outline {
-  background-color: var(--button-outline-bg);
-  border-color: var(--button-outline-border);
-  color: var(--button-outline-text);
-}
-
-a.button.outline:hover,
-button.outline:hover { background-color: var(--button-outline-bg-hover); }
-
-a.button.outline:active,
-button.outline:active { background-color: var(--button-outline-bg-active); }
-
-/* Ghost */
-a.button.ghost,
-button.ghost {
-  background-color: var(--button-ghost-bg);
-  color: var(--button-ghost-text);
-}
-
-a.button.ghost:hover,
-button.ghost:hover { background-color: var(--button-ghost-bg-hover); }
-
-a.button.ghost:active,
-button.ghost:active { background-color: var(--button-ghost-bg-active); }
-
-/* Ghost inverted (for dark backgrounds) */
-a.button.ghost-inverted,
-button.ghost-inverted {
-  background-color: var(--button-ghost-inverted-bg);
-  color: var(--button-ghost-inverted-text);
-}
-
-a.button.ghost-inverted:hover,
-button.ghost-inverted:hover { background-color: var(--button-ghost-inverted-bg-hover); }
-
-a.button.ghost-inverted:active,
-button.ghost-inverted:active { background-color: var(--button-ghost-inverted-bg-active); }
-
-/* Destructive */
-a.button.destructive,
-button.destructive {
-  background-color: var(--button-destructive-bg);
-  color: var(--button-destructive-text);
-}
-
-a.button.destructive:hover,
-button.destructive:hover { background-color: var(--button-destructive-bg-hover); }
-
-a.button.destructive:active,
-button.destructive:active { background-color: var(--button-destructive-bg-active); }
-
-/* ----- Sizes ----- */
-
-a.button.button-small,
-button.button-small {
-  min-height: var(--button-small-min-height);
-  padding: var(--button-small-padding-block) var(--button-small-padding-inline);
-  font-size: var(--button-small-font-size);
-  line-height: var(--button-small-line-height);
-  gap: 6px;
-}
-
-a.button.button-mini,
-button.button-mini {
-  min-height: var(--button-mini-min-height);
-  padding: var(--button-mini-padding-block) var(--button-mini-padding-inline);
-  font-size: var(--button-mini-font-size);
-  line-height: var(--button-mini-line-height);
-  gap: 6px;
-}
-
-/* Round: pill shape with Small-size metrics (per Figma) */
-a.button.button-round,
-button.button-round {
-  min-height: var(--button-small-min-height);
-  padding: var(--button-small-padding-block) var(--button-small-padding-inline);
-  gap: 6px;
-  border-radius: var(--button-radius-round);
-}
-
-/* ----- Shapes ----- */
-
-a.button.button-square,
-button.button-square {
-  border-radius: var(--button-radius-square);
-}
-
-/* button-round wins over button-square if both are somehow set */
-a.button.button-round.button-square,
-button.button-round.button-square {
-  border-radius: var(--button-radius-round);
-}
 
 main img {
   max-width: 100%;

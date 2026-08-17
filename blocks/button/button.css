@@ -1,0 +1,125 @@
+/* Button block — full variation matrix (color x size x shape) from the Figma
+   design system (node 746:22052). Design tokens are defined once in
+   styles/styles.css :root (shared with the base a.button). This file styles the
+   anchor the block renders: `a.button` carrying button-<variant> classes. */
+
+.button.block {
+  /* the block wrapper is layout-only; the anchor carries all button styling */
+  display: inline-flex;
+  margin: 12px 0;
+}
+
+/* Anchor reset within the block (base a.button rules in styles.css already
+   provide the shared box; these just re-assert margin collapse inside block). */
+.button.block a.button {
+  margin: 0;
+}
+
+/* ===== Color variants ===== */
+
+/* Primary */
+.button.block a.button.button-primary {
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-text);
+  border-color: transparent;
+}
+
+.button.block a.button.button-primary:hover { background-color: var(--button-primary-bg-hover); }
+.button.block a.button.button-primary:active { background-color: var(--button-primary-bg-active); }
+
+/* Secondary */
+.button.block a.button.button-secondary {
+  background-color: var(--button-secondary-bg);
+  color: var(--button-secondary-text);
+  border-color: transparent;
+}
+
+.button.block a.button.button-secondary:hover { background-color: var(--button-secondary-bg-hover); }
+.button.block a.button.button-secondary:active { background-color: var(--button-secondary-bg-active); }
+
+/* Outline */
+.button.block a.button.button-outline {
+  background-color: var(--button-outline-bg);
+  border-color: var(--button-outline-border);
+  color: var(--button-outline-text);
+}
+
+.button.block a.button.button-outline:hover { background-color: var(--button-outline-bg-hover); }
+.button.block a.button.button-outline:active { background-color: var(--button-outline-bg-active); }
+
+/* Ghost */
+.button.block a.button.button-ghost {
+  background-color: var(--button-ghost-bg);
+  border-color: transparent;
+  color: var(--button-ghost-text);
+}
+
+.button.block a.button.button-ghost:hover { background-color: var(--button-ghost-bg-hover); }
+.button.block a.button.button-ghost:active { background-color: var(--button-ghost-bg-active); }
+
+/* Ghost inverted (for dark surfaces) */
+.button.block a.button.button-ghost-inverted {
+  background-color: var(--button-ghost-inverted-bg);
+  border-color: transparent;
+  color: var(--button-ghost-inverted-text);
+}
+
+.button.block a.button.button-ghost-inverted:hover { background-color: var(--button-ghost-inverted-bg-hover); }
+.button.block a.button.button-ghost-inverted:active { background-color: var(--button-ghost-inverted-bg-active); }
+
+/* Destructive */
+.button.block a.button.button-destructive {
+  background-color: var(--button-destructive-bg);
+  border-color: transparent;
+  color: var(--button-destructive-text);
+}
+
+.button.block a.button.button-destructive:hover { background-color: var(--button-destructive-bg-hover); }
+.button.block a.button.button-destructive:active { background-color: var(--button-destructive-bg-active); }
+
+/* Disabled (any color) */
+.button.block a.button.disabled,
+.button.block a.button[aria-disabled="true"] {
+  background-color: var(--button-disabled-bg);
+  border-color: var(--button-disabled-border);
+  color: var(--button-disabled-text);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ===== Sizes ===== */
+
+.button.block a.button.button-small {
+  min-height: var(--button-small-min-height);
+  padding: var(--button-small-padding-block) var(--button-small-padding-inline);
+  font-size: var(--button-small-font-size);
+  line-height: var(--button-small-line-height);
+  gap: 6px;
+}
+
+.button.block a.button.button-mini {
+  min-height: var(--button-mini-min-height);
+  padding: var(--button-mini-padding-block) var(--button-mini-padding-inline);
+  font-size: var(--button-mini-font-size);
+  line-height: var(--button-mini-line-height);
+  gap: 6px;
+}
+
+/* Round: pill shape with Small-size metrics (per Figma) */
+.button.block a.button.button-round {
+  min-height: var(--button-small-min-height);
+  padding: var(--button-small-padding-block) var(--button-small-padding-inline);
+  gap: 6px;
+  border-radius: var(--button-radius-round);
+}
+
+/* ===== Shapes ===== */
+
+.button.block a.button.button-square {
+  border-radius: var(--button-radius-square);
+}
+
+/* button-round wins over button-square when both are set */
+.button.block a.button.button-round.button-square {
+  border-radius: var(--button-radius-round);
+}

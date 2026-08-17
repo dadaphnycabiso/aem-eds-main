@@ -71,13 +71,60 @@ function buildAutoBlocks() {
   }
 }
 
+// Button variation classes authored on the button-container (via the Button
+// component's linkType / size / shape select fields) that should be mirrored
+// onto the child <a class="button">, which decorateButtons() resets to a bare
+// `button` (or `button primary`/`button secondary` for strong/em wrapping).
+const BUTTON_VARIATION_CLASSES = [
+  'primary', 'secondary', 'outline', 'ghost', 'ghost-inverted', 'destructive',
+  'button-small', 'button-mini', 'button-round', 'button-square',
+];
+
+/**
+ * Capture existing button variation classes from <a> elements BEFORE
+ * decorateButtons() resets them. The XWalk delivery pipeline applies the
+ * linkType value as a class on the <a>, but decorateButtons() in aem.js
+ * unconditionally sets a.className = 'button', wiping it out.
+ * @param {Element} element container element
+ */
+function captureButtonVariations(element) {
+  element.querySelectorAll('a').forEach((a) => {
+    const saved = BUTTON_VARIATION_CLASSES.filter((cls) => a.classList.contains(cls));
+    if (saved.length) {
+      a.dataset.btnVariations = saved.join(' ');
+    }
+  });
+}
+
+/**
+ * Restore captured button variation classes and also mirror any variation
+ * classes found on the .button-container onto the a.button.
+ * Runs AFTER decorateButtons().
+ * @param {Element} element container element
+ */
+export function decorateButtonVariations(element) {
+  element.querySelectorAll('a.button').forEach((a) => {
+    // Restore classes that were on the <a> before decorateButtons() stripped them
+    if (a.dataset.btnVariations) {
+      a.dataset.btnVariations.split(' ').forEach((cls) => a.classList.add(cls));
+      delete a.dataset.btnVariations;
+    }
+    // Also check the container for classes (size/shape delivered there)
+    const container = a.closest('.button-container');
+    if (!container) return;
+    BUTTON_VARIATION_CLASSES.forEach((cls) => {
+      if (container.classList.contains(cls)) a.classList.add(cls);
+    });
+  });
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
  */
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
-  // hopefully forward compatible button decoration
+  captureButtonVariations(main);
   decorateButtons(main);
   decorateIcons(main);
   buildAutoBlocks(main);

@@ -11,6 +11,21 @@ import {
 import { decorateRichtext } from './editor-support-rte.js';
 import { decorateMain } from './scripts.js';
 
+// Capture helper imported alongside decorateButtonVariations
+function captureAndDecorateButtons(element) {
+  // scripts.js captureButtonVariations is not exported, replicate minimal logic
+  const VARIATIONS = [
+    'primary', 'secondary', 'outline', 'ghost', 'ghost-inverted', 'destructive',
+    'button-small', 'button-mini', 'button-round', 'button-square',
+  ];
+  element.querySelectorAll('a').forEach((a) => {
+    const saved = VARIATIONS.filter((cls) => a.classList.contains(cls));
+    if (saved.length) a.dataset.btnVariations = saved.join(' ');
+  });
+  decorateButtons(element);
+  decorateButtonVariations(element);
+}
+
 async function applyChanges(event) {
   // redecorate default content and blocks on patches (in the properties rail)
   const { detail } = event;
@@ -53,7 +68,7 @@ async function applyChanges(event) {
       if (newBlock) {
         newBlock.style.display = 'none';
         block.insertAdjacentElement('afterend', newBlock);
-        decorateButtons(newBlock);
+        captureAndDecorateButtons(newBlock);
         decorateIcons(newBlock);
         decorateBlock(newBlock);
         decorateRichtext(newBlock);
@@ -71,7 +86,7 @@ async function applyChanges(event) {
           const [newSection] = newElements;
           newSection.style.display = 'none';
           element.insertAdjacentElement('afterend', newSection);
-          decorateButtons(newSection);
+          captureAndDecorateButtons(newSection);
           decorateIcons(newSection);
           decorateRichtext(newSection);
           decorateSections(parentElement);
@@ -81,7 +96,7 @@ async function applyChanges(event) {
           newSection.style.display = null;
         } else {
           element.replaceWith(...newElements);
-          decorateButtons(parentElement);
+          captureAndDecorateButtons(parentElement);
           decorateIcons(parentElement);
           decorateRichtext(parentElement);
         }

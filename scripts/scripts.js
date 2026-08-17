@@ -71,40 +71,14 @@ function buildAutoBlocks() {
   }
 }
 
-// Button variation classes authored on the button-container (via the Button
-// component's linkType / size / shape select fields) that should be mirrored
-// onto the child <a class="button">, which decorateButtons() resets to a bare
-// `button` (or `button primary`/`button secondary` for strong/em wrapping).
-const BUTTON_VARIATION_CLASSES = [
-  'primary', 'secondary', 'outline', 'ghost', 'ghost-inverted', 'destructive',
-  'button-small', 'button-mini', 'button-round', 'button-square',
-];
-
-/**
- * Mirror button variation classes from the enclosing `.button-container` onto
- * its `a.button`. The OOTB image/button decoration keeps container classes but
- * strips extra classes off the anchor, so this runs AFTER decorateButtons().
- * Keeps the Button a core default-content component (no block, no core changes).
- * @param {Element} element container element
- */
-export function decorateButtonVariations(element) {
-  element.querySelectorAll('a.button').forEach((a) => {
-    const container = a.closest('.button-container');
-    if (!container) return;
-    BUTTON_VARIATION_CLASSES.forEach((cls) => {
-      if (container.classList.contains(cls)) a.classList.add(cls);
-    });
-  });
-}
-
 /**
  * Decorates the main element.
  * @param {Element} main The main element
  */
+// eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
   // hopefully forward compatible button decoration
   decorateButtons(main);
-  decorateButtonVariations(main);
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);

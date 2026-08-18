@@ -1,0 +1,87 @@
+# CDN Configuration for AEM Edge Delivery Services
+# Deployed via Cloud Manager Config Pipeline
+# Docs: https://experienceleague.adobe.com/en/docs/experience-manager-cloud-service/content/implementing/content-delivery/cdn-credentials-authentication
+#
+# IMPORTANT: This file requires Cloud Manager Config Pipeline for EDS (limited beta).
+# Contact your Adobe team to verify it is enabled for program p28003.
+#
+# Secrets referenced with ${{SECRET_NAME}} must be added as pipeline variables
+# in Cloud Manager > Program > Edge Delivery > Pipelines > View/Edit Variables.
+
+kind: "CDN"
+version: "1"
+data:
+  # ==========================================================================
+  # PHASE 3: Authentication (uncomment when ready)
+  # ==========================================================================
+  # Validates requests from a customer-managed CDN via X-AEM-Edge-Key header.
+  # Only needed if placing a BYO CDN (Akamai, Cloudflare, etc.) in front of
+  # your .aem.live origin.
+  #
+  # authentication:
+  #   authenticators:
+  #     - name: edge-auth
+  #       type: edge
+  #       edgeKey1: ${{CDN_EDGEKEY_1}}
+  #       edgeKey2: ${{CDN_EDGEKEY_2}}
+  #   rules:
+  #     - name: edge-auth-rule
+  #       when: { reqProperty: tier, equals: "publish" }
+  #       action:
+  #         type: authenticate
+  #         authenticator: edge-auth
+
+  # ==========================================================================
+  # PHASE 4: Origin Selectors (uncomment when Edge Functions are ready)
+  # ==========================================================================
+  # Routes specific URL paths to your Edge Function instead of the default
+  # content origin. Required for Edge Functions to receive traffic.
+  #
+  # originSelectors:
+  #   rules:
+  #     - name: edge-function-api
+  #       when: { reqProperty: path, like: "/api/*" }
+  #       action:
+  #         type: selectAemOrigin
+  #         origin: edgeFunction
+  #
+  #     # If using site authentication with Adobe-managed CDN, forward the
+  #     # auth token to the .aem.live origin:
+  #     - name: forward-auth-to-origin
+  #       when: { reqProperty: domain, equals: "www.doc.govt.nz" }
+  #       action:
+  #         type: selectAemOrigin
+  #         headers:
+  #           Authorization: "${{HLX_TOKEN}}"
+
+  # ==========================================================================
+  # PHASE 1: Traffic Filter Rules (active now)
+  # ==========================================================================
+  # Basic traffic filtering and rate limiting for your site.
+  # These rules run at the CDN edge before reaching your origin.
+  trafficFilters:
+    rules:
+      # Block common vulnerability scanners and bots
+      - name: block-scanners
+        when:
+          reqProperty: path
+          like: "*.env*"
+        action: block
+
+      - name: block-wp-probes
+        when:
+          reqProperty: path
+          like: "/wp-*"
+        action: block
+
+      # Rate limit to protect against basic DDoS
+      # Allows 100 requests per 10 seconds per IP
+      - name: rate-limit-general
+        when:
+          reqProperty: path
+          like: "/*"
+        rateLimit:
+          limit: 100
+          window: 10
+          penalty: 60
+        action: log

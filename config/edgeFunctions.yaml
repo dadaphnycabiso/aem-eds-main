@@ -1,0 +1,32 @@
+# Edge Functions Configuration for AEM Edge Delivery Services
+# Deployed via Cloud Manager Config Pipeline alongside cdn.yaml
+# Docs: https://experienceleague.adobe.com/en/docs/experience-manager-learn/cloud-service/edge-functions/edge-functions-how-to/configs-and-secrets
+#
+# IMPORTANT: AEM Edge Functions is in PUBLIC BETA.
+# Email aemcs-edgecompute-feedback@adobe.com before production use.
+#
+# On EDS, one config pipeline serves all 3 sites (dev/stage/prod).
+# Prefix each secret name with its site to avoid collisions.
+# Your Edge Function code uses SecretStoreManager to look up the correct
+# value at runtime based on which site is serving the request.
+
+# ==========================================================================
+# PHASE 4: Secrets for Edge Functions (uncomment when ready)
+# ==========================================================================
+# Each ${{...}} references a Cloud Manager pipeline variable (type: Secret).
+# Add variables in: Cloud Manager > Program > Edge Delivery > Pipelines >
+# View/Edit Variables
+#
+# secrets:
+#   # Example: API token for a search service called from an Edge Function
+#   - key: SEARCH_API_TOKEN_DEV
+#     value: ${{DEV_SEARCH_API_TOKEN}}
+#   - key: SEARCH_API_TOKEN_STAGE
+#     value: ${{STAGE_SEARCH_API_TOKEN}}
+#   - key: SEARCH_API_TOKEN_MAIN
+#     value: ${{MAIN_SEARCH_API_TOKEN}}
+#
+# configs:
+#   # Non-secret configuration (safe to commit)
+#   - key: SEARCH_API_BASE_URL
+#     value: "https://api.search-service.example.com/v1"

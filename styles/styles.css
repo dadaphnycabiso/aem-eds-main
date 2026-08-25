@@ -48,6 +48,7 @@
   /* Text + link colours (WCAG AA on white/page backgrounds) */
   --doc-text-primary: #1c1917; /* headings   — ~16:1 on #fff */
   --doc-text-body: #44403c; /* body copy  — ~9.7:1 on #fff */
+  --doc-text-muted: #57534e; /* captions   — ~7.0:1 on #fff */
   --doc-link: #0066a4; /* link       — ~5.3:1 on #fff */
   --doc-link-hover: #004b7a; /* link hover — ~8.2:1 on #fff */
   --doc-focus-ring: #004b7a;
@@ -69,6 +70,14 @@
   --doc-lead-line: 24px;
   --doc-small-size: 14px;
   --doc-small-line: 20px;
+
+  /* Text Style variants (Figma "Scales" board, node 2559-123454) */
+  --doc-body-2-size: 14px;
+  --doc-body-2-line: 20px;
+  --doc-caption-1-size: 14px;
+  --doc-caption-1-line: 20px;
+  --doc-caption-2-size: 12px;
+  --doc-caption-2-line: 16px;
 
   /* Weights */
   --doc-weight-display: 500; /* Zilla Slab Medium */
@@ -534,6 +543,32 @@ main .section.highlight {
   font-size: var(--doc-small-size);
   line-height: var(--doc-small-line);
   color: var(--doc-text-body);
+}
+
+/* --- Text Style variants (authorable via the "Text Style" select) ----
+   The chosen value is applied as a class on the Text Block's
+   .default-content-wrapper. Body 1 is the default (no class) and needs no
+   override. Reusable .doc-body-2 / .doc-caption-1 / .doc-caption-2 classes
+   are also provided for use on individual elements in other components. */
+.doc-body-2,
+.default-content-wrapper.doc-body-2 :is(p, li) {
+  font-size: var(--doc-body-2-size);
+  line-height: var(--doc-body-2-line);
+  color: var(--doc-text-body);
+}
+
+.doc-caption-1,
+.default-content-wrapper.doc-caption-1 :is(p, li) {
+  font-size: var(--doc-caption-1-size);
+  line-height: var(--doc-caption-1-line);
+  color: var(--doc-text-muted);
+}
+
+.doc-caption-2,
+.default-content-wrapper.doc-caption-2 :is(p, li) {
+  font-size: var(--doc-caption-2-size);
+  line-height: var(--doc-caption-2-line);
+  color: var(--doc-text-muted);
 }
 
 /* First block in the Text Block should not add top margin */

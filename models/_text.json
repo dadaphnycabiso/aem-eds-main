@@ -8,14 +8,45 @@
           "page": {
             "resourceType": "core/franklin/components/text/v1/text",
             "template": {
-              "filter": "text"
+              "filter": "text",
+              "model": "text"
             }
           }
         }
       }
     }
   ],
-  "models": [],
+  "models": [
+    {
+      "id": "text",
+      "fields": [
+        {
+          "component": "select",
+          "name": "classes",
+          "label": "Text Style",
+          "value": "",
+          "options": [
+            {
+              "name": "Body 1 (Default)",
+              "value": ""
+            },
+            {
+              "name": "Body 2",
+              "value": "doc-body-2"
+            },
+            {
+              "name": "Caption 1",
+              "value": "doc-caption-1"
+            },
+            {
+              "name": "Caption 2",
+              "value": "doc-caption-2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "filters": [
     {
       "id": "text",

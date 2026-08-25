@@ -6,6 +6,9 @@
     ]
   },
   {
+    "...": "./_text.json#/filters"
+  },
+  {
     "...": "./_section.json#/filters"
   },
   {

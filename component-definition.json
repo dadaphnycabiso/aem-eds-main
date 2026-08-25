@@ -5,13 +5,15 @@
       "id": "default",
       "components": [
         {
-          "title": "Text",
+          "title": "Text Block",
           "id": "text",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/text/v1/text",
-                "template": {}
+                "template": {
+                  "filter": "text"
+                }
               }
             }
           }

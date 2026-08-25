@@ -39,6 +39,45 @@
   /* nav height (76px header + 10px gold accent bar) */
   --nav-height: 86px;
 
+  /* ===== DOC Design System — Text Block typography tokens ===== */
+
+  /* Type families */
+  --doc-font-display: 'Zilla Slab', zilla-slab-fallback, georgia, serif; /* H2 */
+  --doc-font-sans: 'Clear Sans', clear-sans-fallback, arial, sans-serif; /* H3–H5, body */
+
+  /* Text + link colours (WCAG AA on white/page backgrounds) */
+  --doc-text-primary: #1c1917; /* headings   — ~16:1 on #fff */
+  --doc-text-body: #44403c; /* body copy  — ~9.7:1 on #fff */
+  --doc-link: #0066a4; /* link       — ~5.3:1 on #fff */
+  --doc-link-hover: #004b7a; /* link hover — ~8.2:1 on #fff */
+  --doc-focus-ring: #004b7a;
+
+  /* Heading scale — mobile first (base) */
+  --doc-h2-size: 28px;
+  --doc-h2-line: 34px;
+  --doc-h3-size: 24px;
+  --doc-h3-line: 30px;
+  --doc-h4-size: 20px;
+  --doc-h4-line: 26px;
+  --doc-h5-size: 18px;
+  --doc-h5-line: 24px;
+
+  /* Body scale (Clear Sans) */
+  --doc-body-size: 16px;
+  --doc-body-line: 24px;
+  --doc-lead-size: 20px;
+  --doc-lead-line: 24px;
+  --doc-small-size: 14px;
+  --doc-small-line: 20px;
+
+  /* Weights */
+  --doc-weight-display: 500; /* Zilla Slab Medium */
+  --doc-weight-heading: 700; /* Clear Sans Bold   */
+  --doc-weight-body: 400;
+
+  /* Vertical rhythm */
+  --doc-block-gap: 16px;
+
   /* ===== Button design tokens (Figma: 2026 DOC Design System, node 746:22052) ===== */
 
   /* Typography */
@@ -380,4 +419,227 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+/*
+ * ===================================================================
+ * DOC Design System — Text Block typography
+ * Figma: 2026 DOC Design System (nodes 2559-123459 typography,
+ * 3107-79355 lists, 2918-104970 / 3261-136719 links).
+ *
+ * Reusable .doc-* classes carry the type styles so any component can
+ * opt in; the same rules are applied automatically to default content
+ * (the Text Block) via .default-content-wrapper. H1 is intentionally
+ * excluded here — it is reserved for page titles only.
+ * DOC design tokens live in the :root block at the top of this file.
+ * ===================================================================
+ */
+
+/* Tablet */
+@media (width >= 600px) {
+  :root {
+    --doc-h2-size: 32px;
+    --doc-h2-line: 40px;
+    --doc-h3-size: 26px;
+    --doc-h3-line: 32px;
+    --doc-h4-size: 22px;
+    --doc-h4-line: 28px;
+  }
+}
+
+/* Desktop — exact Figma values */
+@media (width >= 900px) {
+  :root {
+    --doc-h2-size: 36px;
+    --doc-h2-line: 43px;
+    --doc-h3-size: 28px;
+    --doc-h3-line: 34px;
+    --doc-h4-size: 22px;
+    --doc-h4-line: 26px;
+    --doc-h5-size: 18px;
+    --doc-h5-line: 22px;
+  }
+}
+
+/* --- Headings ------------------------------------------------------- */
+.doc-h2,
+.default-content-wrapper h2 {
+  margin: 32px 0 var(--doc-block-gap);
+  font-family: var(--doc-font-display);
+  font-weight: var(--doc-weight-display);
+  font-size: var(--doc-h2-size);
+  line-height: var(--doc-h2-line);
+  letter-spacing: -0.5px;
+  color: var(--doc-text-primary);
+}
+
+.doc-h3,
+.default-content-wrapper h3 {
+  margin: 28px 0 12px;
+  font-family: var(--doc-font-sans);
+  font-weight: var(--doc-weight-heading);
+  font-size: var(--doc-h3-size);
+  line-height: var(--doc-h3-line);
+  letter-spacing: normal;
+  color: var(--doc-text-primary);
+}
+
+.doc-h4,
+.default-content-wrapper h4 {
+  margin: 24px 0 8px;
+  font-family: var(--doc-font-sans);
+  font-weight: var(--doc-weight-heading);
+  font-size: var(--doc-h4-size);
+  line-height: var(--doc-h4-line);
+  letter-spacing: normal;
+  color: var(--doc-text-primary);
+}
+
+.doc-h5,
+.default-content-wrapper h5 {
+  margin: 24px 0 8px;
+  font-family: var(--doc-font-sans);
+  font-weight: var(--doc-weight-heading);
+  font-size: var(--doc-h5-size);
+  line-height: var(--doc-h5-line);
+  letter-spacing: normal;
+  color: var(--doc-text-primary);
+}
+
+/* --- Body copy ------------------------------------------------------ */
+.doc-body,
+.default-content-wrapper p {
+  margin: 0 0 var(--doc-block-gap);
+  font-family: var(--doc-font-sans);
+  font-weight: var(--doc-weight-body);
+  font-size: var(--doc-body-size);
+  line-height: var(--doc-body-line);
+  letter-spacing: 0;
+  color: var(--doc-text-body);
+}
+
+/* Lead / intro paragraph (Clear Sans Bold 20) — opt-in reusable class */
+.doc-lead {
+  font-family: var(--doc-font-sans);
+  font-weight: var(--doc-weight-heading);
+  font-size: var(--doc-lead-size);
+  line-height: var(--doc-lead-line);
+  color: var(--doc-text-body);
+}
+
+/* Small print (Clear Sans 14) — opt-in reusable class */
+.doc-small {
+  font-family: var(--doc-font-sans);
+  font-weight: var(--doc-weight-body);
+  font-size: var(--doc-small-size);
+  line-height: var(--doc-small-line);
+  color: var(--doc-text-body);
+}
+
+/* First block in the Text Block should not add top margin */
+.default-content-wrapper > :first-child {
+  margin-top: 0;
+}
+
+/* --- Lists (ordered + unordered, incl. nesting) --------------------- */
+.doc-list,
+.default-content-wrapper ul,
+.default-content-wrapper ol {
+  margin: 0 0 var(--doc-block-gap);
+  padding-left: 24px;
+  font-family: var(--doc-font-sans);
+  font-weight: var(--doc-weight-body);
+  font-size: var(--doc-body-size);
+  line-height: var(--doc-body-line);
+  color: var(--doc-text-body);
+}
+
+.doc-list li,
+.default-content-wrapper li {
+  margin-bottom: 8px;
+  padding-left: 4px;
+}
+
+.doc-list li:last-child,
+.default-content-wrapper li:last-child {
+  margin-bottom: 0;
+}
+
+.doc-list li::marker,
+.default-content-wrapper li::marker {
+  color: var(--doc-text-body);
+}
+
+/* Bullet / number styles */
+.doc-list,
+.default-content-wrapper ul {
+  list-style-type: disc;
+}
+
+.default-content-wrapper ol {
+  list-style-type: decimal;
+}
+
+/* Nested lists: indentation + distinct markers (ascending specificity) */
+.default-content-wrapper ul ul,
+.default-content-wrapper ul ol,
+.default-content-wrapper ol ul,
+.default-content-wrapper ol ol {
+  margin: 8px 0 0;
+}
+
+.default-content-wrapper ul ul {
+  list-style-type: circle;
+}
+
+.default-content-wrapper ol ol {
+  list-style-type: lower-alpha;
+}
+
+.default-content-wrapper ul ul ul {
+  list-style-type: square;
+}
+
+.default-content-wrapper ol ol ol {
+  list-style-type: lower-roman;
+}
+
+/* --- Links (internal vs external) ----------------------------------- */
+
+/* Base link style — excludes anchors decorated as buttons */
+.doc-link,
+.default-content-wrapper a:any-link:not(.button) {
+  color: var(--doc-link);
+  font-weight: var(--doc-weight-heading);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  overflow-wrap: break-word;
+}
+
+.doc-link:hover,
+.default-content-wrapper a:any-link:not(.button):hover {
+  color: var(--doc-link-hover);
+  text-decoration: underline;
+}
+
+/* Visible focus indicator (WCAG 2.4.7 / 2.4.11) */
+.doc-link:focus-visible,
+.default-content-wrapper a:any-link:not(.button):focus-visible {
+  outline: 2px solid var(--doc-focus-ring);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* External links (any http[s] host that is not doc.govt.nz) get a
+   trailing arrow indicator. Use .doc-link-external to force it elsewhere. */
+.doc-link-external::after,
+.default-content-wrapper a[href^="http"]:not([href*="doc.govt.nz"], .button)::after {
+  content: "";
+  display: inline-block;
+  width: 0.7em;
+  height: 0.7em;
+  margin-left: 0.25em;
+  background-color: currentcolor;
+  vertical-align: -0.02em;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M8.5 6a1.5 1.5 0 0 0 0 3h4.379L6.44 15.44a1.5 1.5 0 1 0 2.12 2.12L15 11.12V15.5a1.5 1.5 0 0 0 3 0v-8A1.5 1.5 0 0 0 16.5 6h-8Z'/%3E%3C/svg%3E") no-repeat center / contain;
 }

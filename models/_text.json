@@ -1,17 +1,39 @@
 {
   "definitions": [
     {
-      "title": "Text",
+      "title": "Text Block",
       "id": "text",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/text/v1/text",
-            "template": {}
+            "template": {
+              "filter": "text"
+            }
           }
         }
       }
     }
   ],
-  "models": []
+  "models": [],
+  "filters": [
+    {
+      "id": "text",
+      "components": [],
+      "rte": {
+        "toolbar": {
+          "format": ["bold", "italic", "underline"],
+          "blocks": ["paragraph", "h2", "h3", "h4", "h5"],
+          "list": ["bullet_list", "ordered_list"],
+          "insert": ["link"],
+          "sr_script": ["superscript", "subscript"],
+          "editor": ["removeformat"]
+        },
+        "actions": {
+          "bullet_list": { "wrapInParagraphs": true },
+          "ordered_list": { "wrapInParagraphs": true }
+        }
+      }
+    }
+  ]
 }

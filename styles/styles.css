@@ -20,8 +20,9 @@
   --link-hover-color: #1d3ecf;
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --body-font-family: 'Clear Sans', clear-sans-fallback, arial, sans-serif;
+  --heading-font-family: 'Clear Sans', clear-sans-fallback, arial, sans-serif;
+  --heading-font-family-display: 'Zilla Slab', zilla-slab-fallback, georgia, serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -36,8 +37,8 @@
   --heading-font-size-s: 24px;
   --heading-font-size-xs: 22px;
 
-  /* nav height (76px header + 10px gold accent bar) */
-  --nav-height: 86px;
+  /* nav height */
+  --nav-height: 64px;
 
   /* ===== DOC Design System — Text Block typography tokens ===== */
 
@@ -46,9 +47,8 @@
   --doc-font-sans: 'Clear Sans', clear-sans-fallback, arial, sans-serif; /* H3–H5, body */
 
   /* Text + link colours (WCAG AA on white/page backgrounds) */
-  --doc-text-primary: #1c1917; /* headings   — ~16:1 on #fff */
+  --doc-text-primary: #1a1a1a; /* headings   — ~16:1 on #fff */
   --doc-text-body: #44403c; /* body copy  — ~9.7:1 on #fff */
-  --doc-text-muted: #57534e; /* captions   — ~7.0:1 on #fff */
   --doc-link: #0066a4; /* link       — ~5.3:1 on #fff */
   --doc-link-hover: #004b7a; /* link hover — ~8.2:1 on #fff */
   --doc-focus-ring: #004b7a;
@@ -69,104 +69,34 @@
   --doc-lead-size: 20px;
   --doc-lead-line: 24px;
   --doc-small-size: 14px;
-  --doc-small-line: 20px;
-
-  /* Text Style variants (Figma "Scales" board, node 2559-123454) */
-  --doc-body-2-size: 14px;
-  --doc-body-2-line: 20px;
-  --doc-caption-1-size: 14px;
-  --doc-caption-1-line: 20px;
-  --doc-caption-2-size: 12px;
-  --doc-caption-2-line: 16px;
+  --doc-small-line: 21px;
+  --doc-caption1-size: 12px;
+  --doc-caption1-line: 18px;
+  --doc-caption2-size: 11px;
+  --doc-caption2-line: 17px;
 
   /* Weights */
-  --doc-weight-display: 500; /* Zilla Slab Medium */
-  --doc-weight-heading: 700; /* Clear Sans Bold   */
+  --doc-weight-display: 300; /* Zilla Slab Light (default), 500 Medium via <strong> */
+  --doc-weight-heading: 500; /* Clear Sans Medium  */
   --doc-weight-body: 400;
 
   /* Vertical rhythm */
   --doc-block-gap: 16px;
-
-  /* ===== Button design tokens (Figma: 2026 DOC Design System, node 746:22052) ===== */
-
-  /* Typography */
-  --button-font-family: 'Clear Sans', clear-sans-fallback, sans-serif;
-  --button-font-weight: 700;
-
-  /* Sizing scale — Regular (default) */
-  --button-font-size: 14px;
-  --button-line-height: 21px;
-  --button-padding-block: 12px;
-  --button-padding-inline: 16px;
-  --button-min-height: 36px;
-  --button-gap: 8px;
-  --button-radius: 8px;
-
-  /* Sizing scale — Small */
-  --button-small-font-size: 14px;
-  --button-small-line-height: 21px;
-  --button-small-padding-block: 6px;
-  --button-small-padding-inline: 12px;
-  --button-small-min-height: 32px;
-
-  /* Sizing scale — Mini */
-  --button-mini-font-size: 12px;
-  --button-mini-line-height: 18px;
-  --button-mini-padding-block: 3px;
-  --button-mini-padding-inline: 8px;
-  --button-mini-min-height: 24px;
-
-  /* Shape */
-  --button-radius-square: 0;
-  --button-radius-round: 9999px;
-
-  /* Focus ring (border/focus from Figma) */
-  --button-focus-ring: #b3dbf2;
-
-  /* Disabled (shared across variants) */
-  --button-disabled-bg: #f5f5f4;
-  --button-disabled-text: #78716c;
-  --button-disabled-border: #e7e5e4;
-
-  /* Primary */
-  --button-primary-bg: #44403c;
-  --button-primary-bg-hover: #78716c;
-  --button-primary-bg-active: #292524;
-  --button-primary-text: #fafaf9;
-
-  /* Secondary */
-  --button-secondary-bg: #cce5b9;
-  --button-secondary-bg-hover: #e5f2dc;
-  --button-secondary-bg-active: #aad18f;
-  --button-secondary-text: #1c1917;
-
-  /* Outline */
-  --button-outline-bg: #fffc;
-  --button-outline-bg-hover: #f5f5f4;
-  --button-outline-bg-active: #e7e5e4;
-  --button-outline-text: #1c1917;
-  --button-outline-border: #d6d3d1;
-
-  /* Ghost */
-  --button-ghost-bg: transparent;
-  --button-ghost-bg-hover: #f5f5f4;
-  --button-ghost-bg-active: #e7e5e4;
-  --button-ghost-text: #44403c;
-
-  /* Ghost inverted (for dark surfaces) */
-  --button-ghost-inverted-bg: transparent;
-  --button-ghost-inverted-bg-hover: #ffffff3d;
-  --button-ghost-inverted-bg-active: #ffffff52;
-  --button-ghost-inverted-text: #fafaf9;
-
-  /* Destructive */
-  --button-destructive-bg: #e11836;
-  --button-destructive-bg-hover: #b4132b;
-  --button-destructive-bg-active: #9e0d23;
-  --button-destructive-text: #fcfbf8;
 }
 
 /* fallback fonts */
+@font-face {
+  font-family: zilla-slab-fallback;
+  size-adjust: 101%;
+  src: local('Georgia');
+}
+
+@font-face {
+  font-family: clear-sans-fallback;
+  size-adjust: 96%;
+  src: local('Arial');
+}
+
 @font-face {
   font-family: roboto-condensed-fallback;
   size-adjust: 88.82%;
@@ -233,16 +163,47 @@ h6 {
   margin-top: 0.8em;
   margin-bottom: 0.25em;
   font-family: var(--heading-font-family);
-  font-weight: 600;
+  font-weight: var(--doc-weight-heading);
   line-height: 1.25;
   scroll-margin: 40px;
+  color: var(--doc-text-primary);
 }
 
-h1 { font-size: var(--heading-font-size-xxl); }
-h2 { font-size: var(--heading-font-size-xl); }
-h3 { font-size: var(--heading-font-size-l); }
-h4 { font-size: var(--heading-font-size-m); }
-h5 { font-size: var(--heading-font-size-s); }
+h1,
+h2 {
+  font-family: var(--heading-font-family-display);
+  font-weight: var(--doc-weight-display);
+}
+
+h1 strong,
+h2 strong {
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 48px;
+  line-height: 58px;
+}
+
+h2 {
+  font-size: var(--doc-h2-size);
+  line-height: var(--doc-h2-line);
+}
+
+h3 {
+  font-size: var(--doc-h3-size);
+  line-height: var(--doc-h3-line);
+}
+
+h4 {
+  font-size: var(--doc-h4-size);
+  line-height: var(--doc-h4-line);
+}
+
+h5 {
+  font-size: var(--doc-h5-size);
+  line-height: var(--doc-h5-line);
+}
 h6 { font-size: var(--heading-font-size-xs); }
 
 p,
@@ -291,98 +252,118 @@ a:hover {
   text-decoration: underline;
 }
 
-/* ===== Buttons (base) =====
-   Token-driven base button used by inline rich-text links (a.button) and native
-   <button>. Only the base look plus primary/secondary aliases live here, since
-   inline links can only signal those two via <strong>/<em>. The full variation
-   matrix (6 colors x 4 sizes x 2 shapes) is delivered by the Button block and
-   styled in blocks/button/button.css. Design tokens are defined in :root above. */
+/* buttons */
+p.button-wrapper {
+  margin: 12px 0;
+}
 
 a.button:any-link,
-button {
+button.button {
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--button-gap);
   max-width: 100%;
-  min-height: var(--button-min-height);
-  margin: 12px 0;
-  border: 1px solid transparent;
-  border-radius: var(--button-radius);
-  padding: var(--button-padding-block) var(--button-padding-inline);
-  font-family: var(--button-font-family);
-  font-style: normal;
-  font-weight: var(--button-font-weight);
-  font-size: var(--button-font-size);
-  line-height: var(--button-line-height);
-  text-align: center;
+  margin: 0;
+  border: 2px solid transparent;
+  border-radius: 2.4em;
+  padding: 0.5em 1.2em;
+  font: inherit;
+  font-weight: 500;
+  line-height: 1.25;
   text-decoration: none;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-
-  /* default = primary */
-  background-color: var(--button-primary-bg);
-  color: var(--button-primary-text);
-  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
-a.button:hover,
-button:hover {
-  background-color: var(--button-primary-bg-hover);
-}
-
-a.button:active,
-button:active {
-  background-color: var(--button-primary-bg-active);
-}
-
-a.button:focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--button-focus-ring);
-  outline-offset: 2px;
-}
-
-button:disabled,
-button:disabled:hover,
-a.button.disabled,
-a.button[aria-disabled="true"] {
-  background-color: var(--button-disabled-bg);
-  border-color: var(--button-disabled-border);
-  color: var(--button-disabled-text);
+a.button[aria-disabled="true"],
+button.button:disabled {
   cursor: not-allowed;
   pointer-events: none;
 }
 
-/* Inline rich-text buttons: the boilerplate wraps a link in <strong>/<em> to
-   signal primary/secondary. The full color/size/shape variation matrix lives
-   in the Button block (blocks/button/button.css); these two aliases keep inline
-   authored links working. */
 a.button.primary,
-button.primary {
-  background-color: var(--button-primary-bg);
-  color: var(--button-primary-text);
+button.button.primary {
+  border-color: var(--text-color);
+  background-color: var(--text-color);
+  color: var(--background-color);
 }
 
 a.button.primary:hover,
-button.primary:hover { background-color: var(--button-primary-bg-hover); }
+a.button.primary:focus-visible,
+button.button.primary:hover,
+button.button.primary:focus-visible {
+  border-color: var(--dark-color);
+  background-color: var(--dark-color);
+  color: var(--light-color);
+}
 
-a.button.primary:active,
-button.primary:active { background-color: var(--button-primary-bg-active); }
+a.button.primary[aria-disabled="true"],
+a.button.primary[aria-disabled="true"]:hover,
+a.button.primary[aria-disabled="true"]:focus-visible,
+button.button.primary:disabled,
+button.button.primary:disabled:hover,
+button.button.primary:disabled:focus-visible {
+  background-color: var(--light-color);
+  border-color: var(--light-color);
+  color: var(--dark-color);
+}
 
 a.button.secondary,
-button.secondary {
-  background-color: var(--button-secondary-bg);
-  color: var(--button-secondary-text);
+button.button.secondary {
+  border-color: var(--text-color);
+  background-color: transparent;
+  color: var(--text-color);
 }
 
 a.button.secondary:hover,
-button.secondary:hover { background-color: var(--button-secondary-bg-hover); }
+a.button.secondary:focus-visible,
+button.button.secondary:hover,
+button.button.secondary:focus-visible {
+  border-color: var(--dark-color);
+  background-color: var(--light-color);
+  color: var(--dark-color);
+}
 
-a.button.secondary:active,
-button.secondary:active { background-color: var(--button-secondary-bg-active); }
+a.button.secondary[aria-disabled="true"],
+a.button.secondary[aria-disabled="true"]:hover,
+a.button.secondary[aria-disabled="true"]:focus-visible,
+button.button.secondary:disabled,
+button.button.secondary:disabled:hover,
+button.button.secondary:disabled:focus-visible {
+  background-color: var(--light-color);
+  border-color: var(--light-color);
+  color: var(--dark-color);
+}
+
+/* high-impact call-to-action */
+a.button.accent,
+button.button.accent {
+  border-color: var(--link-color);
+  background-color: var(--link-color);
+  color: var(--background-color);
+}
+
+a.button.accent:hover,
+a.button.accent:focus-visible,
+button.button.accent:hover,
+button.button.accent:focus-visible {
+  border-color: var(--link-hover-color);
+  background-color: var(--link-hover-color);
+}
+
+a.button.accent[aria-disabled="true"],
+a.button.accent[aria-disabled="true"]:hover,
+a.button.accent[aria-disabled="true"]:focus-visible,
+button.button.accent:disabled,
+button.button.accent:disabled:hover,
+button.button.accent:disabled:focus-visible {
+  background-color: var(--light-color);
+  border-color: var(--light-color);
+  color: var(--dark-color);
+}
 
 main img {
   max-width: 100%;
@@ -430,6 +411,19 @@ main .section.highlight {
   padding: 40px 0;
 }
 
+/* --- Screen-reader-only utility (WCAG) ------------------------------ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
 /*
  * ===================================================================
  * DOC Design System — Text Block typography
@@ -460,13 +454,13 @@ main .section.highlight {
 @media (width >= 900px) {
   :root {
     --doc-h2-size: 36px;
-    --doc-h2-line: 43px;
-    --doc-h3-size: 28px;
-    --doc-h3-line: 34px;
-    --doc-h4-size: 22px;
-    --doc-h4-line: 26px;
-    --doc-h5-size: 18px;
-    --doc-h5-line: 22px;
+    --doc-h2-line: 44px;
+    --doc-h3-size: 30px;
+    --doc-h3-line: 36px;
+    --doc-h4-size: 24px;
+    --doc-h4-line: 29px;
+    --doc-h5-size: 20px;
+    --doc-h5-line: 24px;
   }
 }
 
@@ -480,6 +474,11 @@ main .section.highlight {
   line-height: var(--doc-h2-line);
   letter-spacing: -0.5px;
   color: var(--doc-text-primary);
+}
+
+.doc-h2 strong,
+.default-content-wrapper h2 strong {
+  font-weight: 500;
 }
 
 .doc-h3,
@@ -537,7 +536,8 @@ main .section.highlight {
 }
 
 /* Small print (Clear Sans 14) — opt-in reusable class */
-.doc-small {
+.doc-small,
+.default-content-wrapper p.doc-small {
   font-family: var(--doc-font-sans);
   font-weight: var(--doc-weight-body);
   font-size: var(--doc-small-size);
@@ -545,35 +545,75 @@ main .section.highlight {
   color: var(--doc-text-body);
 }
 
-/* --- Text Style variants (authorable via the "Text Style" select) ----
-   The chosen value is applied as a class on the Text Block's
-   .default-content-wrapper. Body 1 is the default (no class) and needs no
-   override. Reusable .doc-body-2 / .doc-caption-1 / .doc-caption-2 classes
-   are also provided for use on individual elements in other components. */
-.doc-body-2,
-.default-content-wrapper.doc-body-2 :is(p, li) {
-  font-size: var(--doc-body-2-size);
-  line-height: var(--doc-body-2-line);
+.doc-caption-1,
+.default-content-wrapper p.doc-caption-1 {
+  font-family: var(--doc-font-sans);
+  font-weight: var(--doc-weight-body);
+  font-size: var(--doc-caption1-size);
+  line-height: var(--doc-caption1-line);
   color: var(--doc-text-body);
 }
 
-.doc-caption-1,
-.default-content-wrapper.doc-caption-1 :is(p, li) {
-  font-size: var(--doc-caption-1-size);
-  line-height: var(--doc-caption-1-line);
-  color: var(--doc-text-muted);
+.doc-caption-2,
+.default-content-wrapper p.doc-caption-2 {
+  font-family: var(--doc-font-sans);
+  font-weight: var(--doc-weight-body);
+  font-size: var(--doc-caption2-size);
+  line-height: var(--doc-caption2-line);
+  color: var(--doc-text-body);
 }
 
-.doc-caption-2,
-.default-content-wrapper.doc-caption-2 :is(p, li) {
-  font-size: var(--doc-caption-2-size);
-  line-height: var(--doc-caption-2-line);
-  color: var(--doc-text-muted);
+/* Remapped block elements — h6, blockquote, pre are used in the RTE blocks
+   dropdown as "Body 2", "Caption 1", "Caption 2". JS decoration converts
+   them to semantic <p class="doc-*"> on delivery. These rules ensure they
+   look correct in the editor preview and before JS runs. */
+.default-content-wrapper h6 {
+  font-family: var(--doc-font-sans);
+  font-weight: var(--doc-weight-body);
+  font-size: var(--doc-small-size);
+  line-height: var(--doc-small-line);
+  color: var(--doc-text-body);
+}
+
+.default-content-wrapper blockquote {
+  font-family: var(--doc-font-sans);
+  font-weight: var(--doc-weight-body);
+  font-size: var(--doc-caption1-size);
+  line-height: var(--doc-caption1-line);
+  color: var(--doc-text-body);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.default-content-wrapper pre {
+  font-family: var(--doc-font-sans);
+  font-weight: var(--doc-weight-body);
+  font-size: var(--doc-caption2-size);
+  line-height: var(--doc-caption2-line);
+  color: var(--doc-text-body);
+  white-space: normal;
 }
 
 /* First block in the Text Block should not add top margin */
 .default-content-wrapper > :first-child {
   margin-top: 0;
+}
+
+/* --- Superscript / Subscript ---------------------------------------- */
+.default-content-wrapper sup,
+.default-content-wrapper sub {
+  font-size: 0.645em;
+  color: #57534e;
+  line-height: 0;
+}
+
+.default-content-wrapper sup {
+  vertical-align: super;
+}
+
+.default-content-wrapper sub {
+  vertical-align: sub;
 }
 
 /* --- Lists (ordered + unordered, incl. nesting) --------------------- */
@@ -645,9 +685,11 @@ main .section.highlight {
 .doc-link,
 .default-content-wrapper a:any-link:not(.button) {
   color: var(--doc-link);
-  font-weight: var(--doc-weight-heading);
+  font-weight: 700;
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration-skip-ink: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
   overflow-wrap: break-word;
 }
 
@@ -666,15 +708,16 @@ main .section.highlight {
 }
 
 /* External links (any http[s] host that is not doc.govt.nz) get a
-   trailing arrow indicator. Use .doc-link-external to force it elsewhere. */
+   trailing arrow-in-box icon. Use .doc-link-external to force it elsewhere.
+   Icon: arrow-square-up-right (Figma node 2087-110429), 18×18 px. */
 .doc-link-external::after,
 .default-content-wrapper a[href^="http"]:not([href*="doc.govt.nz"], .button)::after {
   content: "";
   display: inline-block;
-  width: 0.7em;
-  height: 0.7em;
-  margin-left: 0.25em;
+  width: 18px;
+  height: 18px;
+  margin-left: 8px;
   background-color: currentcolor;
-  vertical-align: -0.02em;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M8.5 6a1.5 1.5 0 0 0 0 3h4.379L6.44 15.44a1.5 1.5 0 1 0 2.12 2.12L15 11.12V15.5a1.5 1.5 0 0 0 3 0v-8A1.5 1.5 0 0 0 16.5 6h-8Z'/%3E%3C/svg%3E") no-repeat center / contain;
+  vertical-align: middle;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' fill='none'%3E%3Cpath d='M6.75 6.75h4.5v4.5m0-4.5-4.5 4.5M5.85 15.75h6.3c1.26 0 1.89 0 2.371-.245a2.25 2.25 0 0 0 .984-.984c.245-.48.245-1.11.245-2.371V5.85c0-1.26 0-1.89-.245-2.371a2.25 2.25 0 0 0-.984-.984C14.04 2.25 13.41 2.25 12.15 2.25H5.85c-1.26 0-1.89 0-2.371.245a2.25 2.25 0 0 0-.984.984C2.25 3.96 2.25 4.59 2.25 5.85v6.3c0 1.26 0 1.89.245 2.371.216.424.56.768.984.984.48.245 1.11.245 2.371.245Z' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;
 }

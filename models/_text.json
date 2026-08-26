@@ -8,45 +8,14 @@
           "page": {
             "resourceType": "core/franklin/components/text/v1/text",
             "template": {
-              "filter": "text",
-              "model": "text"
+              "filter": "text"
             }
           }
         }
       }
     }
   ],
-  "models": [
-    {
-      "id": "text",
-      "fields": [
-        {
-          "component": "select",
-          "name": "classes",
-          "label": "Text Style",
-          "value": "",
-          "options": [
-            {
-              "name": "Body 1 (Default)",
-              "value": ""
-            },
-            {
-              "name": "Body 2",
-              "value": "doc-body-2"
-            },
-            {
-              "name": "Caption 1",
-              "value": "doc-caption-1"
-            },
-            {
-              "name": "Caption 2",
-              "value": "doc-caption-2"
-            }
-          ]
-        }
-      ]
-    }
-  ],
+  "models": [],
   "filters": [
     {
       "id": "text",
@@ -54,15 +23,28 @@
       "rte": {
         "toolbar": {
           "format": ["bold", "italic", "underline"],
-          "blocks": ["paragraph", "h2", "h3", "h4", "h5"],
+          "blocks": ["paragraph", "h2", "h3", "h4", "h5", "h6", "blockquote", "code_block"],
           "list": ["bullet_list", "ordered_list"],
           "insert": ["link"],
           "sr_script": ["superscript", "subscript"],
-          "editor": ["removeformat"]
+          "editor": ["removeformat"],
+          "advanced": ["classes"],
+          "sections": ["blocks", "format", "list", "insert", "sr_script", "advanced", "editor"]
         },
         "actions": {
+          "h6": { "label": "Body 2" },
+          "blockquote": { "label": "Caption 1" },
+          "code_block": { "label": "Caption 2" },
           "bullet_list": { "wrapInParagraphs": true },
-          "ordered_list": { "wrapInParagraphs": true }
+          "ordered_list": { "wrapInParagraphs": true },
+          "classes": {
+            "label": "Paragraph Style",
+            "options": [
+              { "value": "doc-small", "label": "Body 2" },
+              { "value": "doc-caption-1", "label": "Caption 1" },
+              { "value": "doc-caption-2", "label": "Caption 2" }
+            ]
+          }
         }
       }
     }

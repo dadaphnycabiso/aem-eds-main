@@ -119,6 +119,49 @@ export function decorateButtonVariations(element) {
 }
 
 /**
+ * Adds a screen-reader-only "(external link)" label to anchors that point
+ * outside doc.govt.nz, so assistive-technology users know the link leaves
+ * the site. Skips anchors already decorated as buttons.
+ * @param {HTMLElement} main The main container element
+ */
+export function decorateExternalLinks(main) {
+  const defined = main.querySelectorAll('a[href^="http"]:not([href*="doc.govt.nz"], .button)');
+  defined.forEach((a) => {
+    if (a.querySelector('.sr-only')) return;
+    const span = document.createElement('span');
+    span.className = 'sr-only';
+    span.textContent = '(external link)';
+    a.appendChild(span);
+  });
+}
+
+/**
+ * Converts remapped RTE block elements to semantic paragraphs with CSS classes.
+ * The RTE blocks dropdown only supports standard HTML elements, so h6, blockquote,
+ * and pre/code are repurposed as "Body 2", "Caption 1", and "Caption 2". This
+ * function converts them to <p class="doc-*"> on the delivered page.
+ * @param {HTMLElement} main The main container element
+ */
+export function decorateTextStyles(main) {
+  const mapping = [
+    { selector: '.default-content-wrapper h6', className: 'doc-small' },
+    { selector: '.default-content-wrapper blockquote', className: 'doc-caption-1' },
+    { selector: '.default-content-wrapper pre', className: 'doc-caption-2' },
+  ];
+  mapping.forEach(({ selector, className }) => {
+    main.querySelectorAll(selector).forEach((el) => {
+      const p = document.createElement('p');
+      p.className = className;
+      p.innerHTML = el.innerHTML;
+      [...el.attributes].forEach((attr) => {
+        if (attr.name !== 'class') p.setAttribute(attr.name, attr.value);
+      });
+      el.replaceWith(p);
+    });
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -130,6 +173,8 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  decorateTextStyles(main);
+  decorateExternalLinks(main);
 }
 
 /**

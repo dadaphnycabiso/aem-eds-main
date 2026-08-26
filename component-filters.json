@@ -20,7 +20,10 @@
           "h2",
           "h3",
           "h4",
-          "h5"
+          "h5",
+          "h6",
+          "blockquote",
+          "code_block"
         ],
         "list": [
           "bullet_list",
@@ -35,14 +38,52 @@
         ],
         "editor": [
           "removeformat"
+        ],
+        "advanced": [
+          "classes"
+        ],
+        "sections": [
+          "blocks",
+          "format",
+          "list",
+          "insert",
+          "sr_script",
+          "advanced",
+          "editor"
         ]
       },
       "actions": {
+        "h6": {
+          "label": "Body 2"
+        },
+        "blockquote": {
+          "label": "Caption 1"
+        },
+        "code_block": {
+          "label": "Caption 2"
+        },
         "bullet_list": {
           "wrapInParagraphs": true
         },
         "ordered_list": {
           "wrapInParagraphs": true
+        },
+        "classes": {
+          "label": "Paragraph Style",
+          "options": [
+            {
+              "value": "doc-small",
+              "label": "Body 2"
+            },
+            {
+              "value": "doc-caption-1",
+              "label": "Caption 1"
+            },
+            {
+              "value": "doc-caption-2",
+              "label": "Caption 2"
+            }
+          ]
         }
       }
     }

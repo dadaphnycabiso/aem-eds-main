@@ -552,8 +552,8 @@ main .section.highlight {
   color: var(--doc-text-body);
 }
 
-/* Remapped block elements — h6 and blockquote are used in the RTE blocks
-   dropdown as "Body 2" and "Caption 1". JS decoration converts them to
+/* Remapped block elements — h6 and code_block are used in the RTE blocks
+   dropdown as "Body 2" and "Caption". JS decoration converts them to
    semantic <p class="doc-*"> on delivery. These rules ensure they look
    correct in the editor preview and before JS runs. */
 .default-content-wrapper h6 {
@@ -564,7 +564,7 @@ main .section.highlight {
   color: var(--doc-text-body);
 }
 
-.default-content-wrapper blockquote {
+.default-content-wrapper pre {
   font-family: var(--doc-font-sans);
   font-weight: var(--doc-weight-body);
   font-size: var(--doc-caption1-size);
@@ -573,6 +573,7 @@ main .section.highlight {
   margin: 0;
   padding: 0;
   border: 0;
+  white-space: normal;
 }
 
 

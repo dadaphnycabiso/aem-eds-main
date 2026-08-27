@@ -22,7 +22,7 @@
           "h5",
           "paragraph",
           "h6",
-          "blockquote"
+          "code_block"
         ],
         "list": [
           "bullet_list",
@@ -54,7 +54,7 @@
         "h6": {
           "label": "Body 2"
         },
-        "blockquote": {
+        "code_block": {
           "label": "Caption"
         },
         "bullet_list": {

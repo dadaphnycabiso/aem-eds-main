@@ -48,7 +48,7 @@
 
   /* Text + link colours (WCAG AA on white/page backgrounds) */
   --doc-text-primary: #1a1a1a; /* headings   — ~16:1 on #fff */
-  --doc-text-body: #44403c; /* body copy  — ~9.7:1 on #fff */
+  --doc-text-body: #1a1a1a; /* body copy  — heading/body color */
   --doc-link: #0066a4; /* link       — ~5.3:1 on #fff */
   --doc-link-hover: #004b7a; /* link hover — ~8.2:1 on #fff */
   --doc-focus-ring: #004b7a;
@@ -57,11 +57,11 @@
   --doc-h2-size: 28px;
   --doc-h2-line: 34px;
   --doc-h3-size: 24px;
-  --doc-h3-line: 30px;
+  --doc-h3-line: 29px;
   --doc-h4-size: 20px;
-  --doc-h4-line: 26px;
+  --doc-h4-line: 24px;
   --doc-h5-size: 18px;
-  --doc-h5-line: 24px;
+  --doc-h5-line: 22px;
 
   /* Body scale (Clear Sans) */
   --doc-body-size: 16px;
@@ -72,8 +72,6 @@
   --doc-small-line: 21px;
   --doc-caption1-size: 12px;
   --doc-caption1-line: 18px;
-  --doc-caption2-size: 11px;
-  --doc-caption2-line: 17px;
 
   /* Weights */
   --doc-weight-display: 300; /* Zilla Slab Light (default), 500 Medium via <strong> */
@@ -554,19 +552,10 @@ main .section.highlight {
   color: var(--doc-text-body);
 }
 
-.doc-caption-2,
-.default-content-wrapper p.doc-caption-2 {
-  font-family: var(--doc-font-sans);
-  font-weight: var(--doc-weight-body);
-  font-size: var(--doc-caption2-size);
-  line-height: var(--doc-caption2-line);
-  color: var(--doc-text-body);
-}
-
-/* Remapped block elements — h6, blockquote, pre are used in the RTE blocks
-   dropdown as "Body 2", "Caption 1", "Caption 2". JS decoration converts
-   them to semantic <p class="doc-*"> on delivery. These rules ensure they
-   look correct in the editor preview and before JS runs. */
+/* Remapped block elements — h6 and blockquote are used in the RTE blocks
+   dropdown as "Body 2" and "Caption 1". JS decoration converts them to
+   semantic <p class="doc-*"> on delivery. These rules ensure they look
+   correct in the editor preview and before JS runs. */
 .default-content-wrapper h6 {
   font-family: var(--doc-font-sans);
   font-weight: var(--doc-weight-body);
@@ -586,14 +575,6 @@ main .section.highlight {
   border: 0;
 }
 
-.default-content-wrapper pre {
-  font-family: var(--doc-font-sans);
-  font-weight: var(--doc-weight-body);
-  font-size: var(--doc-caption2-size);
-  line-height: var(--doc-caption2-line);
-  color: var(--doc-text-body);
-  white-space: normal;
-}
 
 /* First block in the Text Block should not add top margin */
 .default-content-wrapper > :first-child {
@@ -626,7 +607,7 @@ main .section.highlight {
   font-weight: var(--doc-weight-body);
   font-size: var(--doc-body-size);
   line-height: var(--doc-body-line);
-  color: var(--doc-text-body);
+  color: #57534e;
 }
 
 .doc-list li,
@@ -642,7 +623,7 @@ main .section.highlight {
 
 .doc-list li::marker,
 .default-content-wrapper li::marker {
-  color: var(--doc-text-body);
+  color: #57534e;
 }
 
 /* Bullet / number styles */

@@ -144,8 +144,8 @@ export function decorateExternalLinks(main) {
  */
 export function decorateTextStyles(main) {
   const mapping = [
-    { selector: '.default-content-wrapper h6', className: 'doc-small' },
-    { selector: '.default-content-wrapper pre', className: 'doc-caption-1' },
+    { selector: '.default-content-wrapper h6', className: 'text-body-small' },
+    { selector: '.default-content-wrapper pre', className: 'text-caption' },
   ];
   mapping.forEach(({ selector, className }) => {
     main.querySelectorAll(selector).forEach((el) => {

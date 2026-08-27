@@ -49,11 +49,14 @@
   /* Text + link colours (WCAG AA on white/page backgrounds) */
   --doc-text-primary: #1a1a1a; /* headings   — ~16:1 on #fff */
   --doc-text-body: #1a1a1a; /* body copy  — heading/body color */
+  --doc-text-secondary: #57534e; /* neutral-600 — sup/sub, lists */
   --doc-link: #0066a4; /* link       — ~5.3:1 on #fff */
   --doc-link-hover: #004b7a; /* link hover — ~8.2:1 on #fff */
   --doc-focus-ring: #004b7a;
 
   /* Heading scale — mobile first (base) */
+  --doc-h1-size: 32px;
+  --doc-h1-line: 38px;
   --doc-h2-size: 28px;
   --doc-h2-line: 34px;
   --doc-h3-size: 24px;
@@ -78,8 +81,16 @@
   --doc-weight-heading: 500; /* Clear Sans Medium  */
   --doc-weight-body: 400;
 
+  /* Spacing tokens (Figma spacing scale) */
+  --doc-spacing-xs: 4px;
+  --doc-spacing-sm: 8px;
+  --doc-spacing-md: 12px;
+  --doc-spacing-lg: 16px;
+  --doc-spacing-xl: 24px;
+  --doc-spacing-2xl: 32px;
+
   /* Vertical rhythm */
-  --doc-block-gap: 16px;
+  --doc-block-gap: var(--doc-spacing-lg);
 }
 
 /* fallback fonts */
@@ -179,8 +190,8 @@ h2 strong {
 }
 
 h1 {
-  font-size: 48px;
-  line-height: 58px;
+  font-size: var(--doc-h1-size);
+  line-height: var(--doc-h1-line);
 }
 
 h2 {
@@ -439,6 +450,8 @@ main .section.highlight {
 /* Tablet */
 @media (width >= 600px) {
   :root {
+    --doc-h1-size: 48px;
+    --doc-h1-line: 58px;
     --doc-h2-size: 32px;
     --doc-h2-line: 40px;
     --doc-h3-size: 26px;
@@ -451,6 +464,8 @@ main .section.highlight {
 /* Desktop — exact Figma values */
 @media (width >= 900px) {
   :root {
+    --doc-h1-size: 48px;
+    --doc-h1-line: 58px;
     --doc-h2-size: 36px;
     --doc-h2-line: 44px;
     --doc-h3-size: 30px;
@@ -463,9 +478,8 @@ main .section.highlight {
 }
 
 /* --- Headings ------------------------------------------------------- */
-.doc-h2,
 .default-content-wrapper h2 {
-  margin: 32px 0 var(--doc-block-gap);
+  margin: var(--doc-spacing-2xl) 0 var(--doc-block-gap);
   font-family: var(--doc-font-display);
   font-weight: var(--doc-weight-display);
   font-size: var(--doc-h2-size);
@@ -474,14 +488,12 @@ main .section.highlight {
   color: var(--doc-text-primary);
 }
 
-.doc-h2 strong,
 .default-content-wrapper h2 strong {
   font-weight: 500;
 }
 
-.doc-h3,
 .default-content-wrapper h3 {
-  margin: 28px 0 12px;
+  margin: 28px 0 var(--doc-spacing-md);
   font-family: var(--doc-font-sans);
   font-weight: var(--doc-weight-heading);
   font-size: var(--doc-h3-size);
@@ -490,9 +502,8 @@ main .section.highlight {
   color: var(--doc-text-primary);
 }
 
-.doc-h4,
 .default-content-wrapper h4 {
-  margin: 24px 0 8px;
+  margin: var(--doc-spacing-xl) 0 var(--doc-spacing-sm);
   font-family: var(--doc-font-sans);
   font-weight: var(--doc-weight-heading);
   font-size: var(--doc-h4-size);
@@ -501,9 +512,8 @@ main .section.highlight {
   color: var(--doc-text-primary);
 }
 
-.doc-h5,
 .default-content-wrapper h5 {
-  margin: 24px 0 8px;
+  margin: var(--doc-spacing-xl) 0 var(--doc-spacing-sm);
   font-family: var(--doc-font-sans);
   font-weight: var(--doc-weight-heading);
   font-size: var(--doc-h5-size);
@@ -513,7 +523,6 @@ main .section.highlight {
 }
 
 /* --- Body copy ------------------------------------------------------ */
-.doc-body,
 .default-content-wrapper p {
   margin: 0 0 var(--doc-block-gap);
   font-family: var(--doc-font-sans);
@@ -524,18 +533,9 @@ main .section.highlight {
   color: var(--doc-text-body);
 }
 
-/* Lead / intro paragraph (Clear Sans Bold 20) — opt-in reusable class */
-.doc-lead {
-  font-family: var(--doc-font-sans);
-  font-weight: var(--doc-weight-heading);
-  font-size: var(--doc-lead-size);
-  line-height: var(--doc-lead-line);
-  color: var(--doc-text-body);
-}
-
-/* Small print (Clear Sans 14) — opt-in reusable class */
-.doc-small,
-.default-content-wrapper p.doc-small {
+/* --- Body 2 (Small print — Clear Sans 14) --------------------------- */
+.text-body-small,
+.default-content-wrapper p.text-body-small {
   font-family: var(--doc-font-sans);
   font-weight: var(--doc-weight-body);
   font-size: var(--doc-small-size);
@@ -543,8 +543,8 @@ main .section.highlight {
   color: var(--doc-text-body);
 }
 
-.doc-caption-1,
-.default-content-wrapper p.doc-caption-1 {
+.text-caption,
+.default-content-wrapper p.text-caption {
   font-family: var(--doc-font-sans);
   font-weight: var(--doc-weight-body);
   font-size: var(--doc-caption1-size);
@@ -552,10 +552,11 @@ main .section.highlight {
   color: var(--doc-text-body);
 }
 
-/* Remapped block elements — h6 and code_block are used in the RTE blocks
-   dropdown as "Body 2" and "Caption". JS decoration converts them to
-   semantic <p class="doc-*"> on delivery. These rules ensure they look
-   correct in the editor preview and before JS runs. */
+/* Remapped block elements — h6 and pre (code_block) are used in the RTE
+   blocks dropdown as "Body 2" and "Caption". JS decoration converts them
+   to semantic <p class="text-body-small"> and <p class="text-caption">
+   on delivery. These rules ensure they look correct in the editor preview
+   and before JS runs. */
 .default-content-wrapper h6 {
   font-family: var(--doc-font-sans);
   font-weight: var(--doc-weight-body);
@@ -586,7 +587,7 @@ main .section.highlight {
 .default-content-wrapper sup,
 .default-content-wrapper sub {
   font-size: 0.645em;
-  color: #57534e;
+  color: var(--doc-text-secondary);
   line-height: 0;
 }
 
@@ -599,36 +600,31 @@ main .section.highlight {
 }
 
 /* --- Lists (ordered + unordered, incl. nesting) --------------------- */
-.doc-list,
 .default-content-wrapper ul,
 .default-content-wrapper ol {
   margin: 0 0 var(--doc-block-gap);
-  padding-left: 24px;
+  padding-left: var(--doc-spacing-xl);
   font-family: var(--doc-font-sans);
   font-weight: var(--doc-weight-body);
   font-size: var(--doc-body-size);
   line-height: var(--doc-body-line);
-  color: #57534e;
+  color: var(--doc-text-secondary);
 }
 
-.doc-list li,
 .default-content-wrapper li {
-  margin-bottom: 8px;
-  padding-left: 4px;
+  margin-bottom: var(--doc-spacing-sm);
+  padding-left: var(--doc-spacing-xs);
 }
 
-.doc-list li:last-child,
 .default-content-wrapper li:last-child {
   margin-bottom: 0;
 }
 
-.doc-list li::marker,
 .default-content-wrapper li::marker {
-  color: #57534e;
+  color: var(--doc-text-secondary);
 }
 
 /* Bullet / number styles */
-.doc-list,
 .default-content-wrapper ul {
   list-style-type: disc;
 }
@@ -642,7 +638,7 @@ main .section.highlight {
 .default-content-wrapper ul ol,
 .default-content-wrapper ol ul,
 .default-content-wrapper ol ol {
-  margin: 8px 0 0;
+  margin: var(--doc-spacing-sm) 0 0;
 }
 
 .default-content-wrapper ul ul {
@@ -664,7 +660,6 @@ main .section.highlight {
 /* --- Links (internal vs external) ----------------------------------- */
 
 /* Base link style — excludes anchors decorated as buttons */
-.doc-link,
 .default-content-wrapper a:any-link:not(.button) {
   color: var(--doc-link);
   font-weight: 700;
@@ -675,14 +670,12 @@ main .section.highlight {
   overflow-wrap: break-word;
 }
 
-.doc-link:hover,
 .default-content-wrapper a:any-link:not(.button):hover {
   color: var(--doc-link-hover);
   text-decoration: underline;
 }
 
 /* Visible focus indicator (WCAG 2.4.7 / 2.4.11) */
-.doc-link:focus-visible,
 .default-content-wrapper a:any-link:not(.button):focus-visible {
   outline: 2px solid var(--doc-focus-ring);
   outline-offset: 2px;
@@ -692,13 +685,12 @@ main .section.highlight {
 /* External links (any http[s] host that is not doc.govt.nz) get a
    trailing arrow-in-box icon. Use .doc-link-external to force it elsewhere.
    Icon: arrow-square-up-right (Figma node 2087-110429), 18×18 px. */
-.doc-link-external::after,
 .default-content-wrapper a[href^="http"]:not([href*="doc.govt.nz"], .button)::after {
   content: "";
   display: inline-block;
   width: 18px;
   height: 18px;
-  margin-left: 8px;
+  margin-left: var(--doc-spacing-sm);
   background-color: currentcolor;
   vertical-align: middle;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18' fill='none'%3E%3Cpath d='M6.75 6.75h4.5v4.5m0-4.5-4.5 4.5M5.85 15.75h6.3c1.26 0 1.89 0 2.371-.245a2.25 2.25 0 0 0 .984-.984c.245-.48.245-1.11.245-2.371V5.85c0-1.26 0-1.89-.245-2.371a2.25 2.25 0 0 0-.984-.984C14.04 2.25 13.41 2.25 12.15 2.25H5.85c-1.26 0-1.89 0-2.371.245a2.25 2.25 0 0 0-.984.984C2.25 3.96 2.25 4.59 2.25 5.85v6.3c0 1.26 0 1.89.245 2.371.216.424.56.768.984.984.48.245 1.11.245 2.371.245Z' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain;

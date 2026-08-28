@@ -23,7 +23,7 @@
       "rte": {
         "toolbar": {
           "format": ["bold", "italic", "underline"],
-          "blocks": ["h2", "h3", "h4", "h5", "paragraph", "h6", "code_block"],
+          "blocks": ["h2", "h3", "h4", "h5", "paragraph", "h6", "h1"],
           "list": ["bullet_list", "ordered_list"],
           "insert": ["link"],
           "sr_script": ["superscript", "subscript"],
@@ -33,7 +33,7 @@
         "actions": {
           "paragraph": { "label": "Body 1" },
           "h6": { "label": "Body 2" },
-          "code_block": { "label": "Caption" },
+          "h1": { "label": "Caption" },
           "bullet_list": { "wrapInParagraphs": true },
           "ordered_list": { "wrapInParagraphs": true }
         }

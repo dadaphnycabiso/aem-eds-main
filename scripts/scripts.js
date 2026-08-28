@@ -138,14 +138,15 @@ export function decorateExternalLinks(main) {
 /**
  * Converts remapped RTE block elements to semantic paragraphs with CSS classes.
  * The RTE blocks dropdown only supports standard HTML elements, so h6 and
- * code_block are repurposed as "Body 2" and "Caption". This function
- * converts them to <p class="doc-*"> on the delivered page.
+ * h1 are repurposed as "Body 2" and "Caption" in the Text Block. This function
+ * converts them to <p> with the appropriate class on the delivered page.
+ * H1 is safe to convert here because the Title component uses its own wrapper.
  * @param {HTMLElement} main The main container element
  */
 export function decorateTextStyles(main) {
   const mapping = [
     { selector: '.default-content-wrapper h6', className: 'text-body-small' },
-    { selector: '.default-content-wrapper pre', className: 'text-caption' },
+    { selector: '.default-content-wrapper h1', className: 'text-caption' },
   ];
   mapping.forEach(({ selector, className }) => {
     main.querySelectorAll(selector).forEach((el) => {

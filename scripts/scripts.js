@@ -139,10 +139,8 @@ export function decorateExternalLinks(main) {
  * No-op placeholder — Body 2, Caption and their Medium variants are now
  * applied via the RTE CSS-classes plugin, which writes the class directly
  * on the <p> element. No block-type remapping or JS conversion is needed.
- * @param {HTMLElement} _main The main container element (unused)
  */
-// eslint-disable-next-line no-unused-vars
-export function decorateTextStyles(main) { /* intentionally empty */ }
+export function decorateTextStyles() { /* intentionally empty */ }
 
 /**
  * Decorates the main element.

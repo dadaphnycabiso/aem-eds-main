@@ -1,47 +1,40 @@
-.section-title {
+main .section-title {
+  --section-title-gap: var(--doc-space-8);
+  --section-title-text-gap: var(--doc-space-1);
+  --section-title-cta-gap: var(--doc-space-4);
+  --section-title-cta-size: var(--doc-icon-button-sm);
+  --section-title-cta-icon-size: var(--doc-icon-sm);
+  --section-title-subheading-color: var(--doc-color-digital-pounamu);
+
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: var(--doc-space-8);
+  gap: var(--section-title-gap);
 }
 
-.section-title.h3 {
-  gap: var(--doc-space-6);
+main .section-title--h3 {
+  --section-title-gap: var(--doc-space-6);
+  --section-title-text-gap: var(--doc-space-2);
 }
 
-.section-title.h4 {
-  gap: var(--doc-space-4);
+main .section-title--h4 {
+  --section-title-gap: var(--doc-space-4);
+  --section-title-text-gap: var(--doc-space-2);
+  --section-title-cta-size: var(--doc-space-8);
+  --section-title-cta-icon-size: var(--doc-space-4);
 }
 
-.section-title-text {
+main .section-title__text {
   display: flex;
   flex: 1 0 0;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--doc-space-1);
+  gap: var(--section-title-text-gap);
   min-width: 0;
 }
 
-.section-title-subheading {
-  margin: 0;
-  width: 100%;
-  font-family: var(--doc-font-sans);
-  font-weight: var(--doc-font-weight-bold);
-  font-size: var(--doc-body-size);
-  line-height: var(--doc-body-line-height);
-  letter-spacing: 0;
-  color: var(--doc-color-semantic-text-accent);
-  overflow-wrap: break-word;
-}
-
-.section-title.h3 .section-title-subheading,
-.section-title.h4 .section-title-subheading {
-  font-size: var(--doc-small-size);
-  line-height: var(--doc-small-line-height);
-}
-
-.section-title-heading {
+main .section-title__heading {
   margin: 0;
   width: 100%;
   font-family: var(--doc-font-display);
@@ -53,136 +46,119 @@
   overflow-wrap: break-word;
 }
 
-.section-title.h3 .section-title-heading,
-.section-title.h4 .section-title-heading {
+main .section-title--h3 .section-title__heading,
+main .section-title--h4 .section-title__heading {
   font-family: var(--doc-font-sans);
   font-weight: var(--doc-font-weight-bold);
 }
 
-.section-title.h3 .section-title-heading {
+main .section-title--h3 .section-title__heading {
   font-size: var(--doc-h3-size);
   line-height: var(--doc-h3-line-height);
 }
 
-.section-title.h4 .section-title-heading {
+main .section-title--h4 .section-title__heading {
   font-size: var(--doc-h4-size);
   line-height: var(--doc-h4-line-height);
 }
 
-.section-title-cta {
+main .section-title p.section-title__subheading {
+  margin: 0;
+  width: 100%;
+  font-family: var(--doc-font-sans);
+  font-weight: var(--doc-font-weight-medium);
+  font-size: var(--doc-h5-size);
+  line-height: var(--doc-h5-line-height);
+  letter-spacing: 0;
+  color: var(--section-title-subheading-color);
+  overflow-wrap: break-word;
+}
+
+main .section-title a.section-title__cta:any-link:not(.button),
+main .section-title a.section-title__cta:any-link:not(.button):hover,
+main .section-title a.section-title__cta:any-link:not(.button):active,
+main .section-title a.section-title__cta:any-link:not(.button):focus,
+main .section-title a.section-title__cta:any-link:not(.button):focus-visible {
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
-  gap: var(--doc-space-4);
+  gap: var(--section-title-cta-gap);
   color: var(--doc-color-semantic-text-body);
+  font-weight: var(--doc-font-weight-regular);
   text-decoration: none;
+  outline: none;
 }
 
-.section-title-cta:any-link,
-.section-title-cta:hover,
-.section-title-cta:focus-visible {
-  color: var(--doc-color-semantic-text-body);
-  text-decoration: none;
+main .section-title a.section-title__cta[href]::after {
+  content: none;
+  display: none;
 }
 
-.section-title-cta-label {
+main .section-title__cta-label {
   display: none;
   font-family: var(--doc-font-sans);
   font-weight: var(--doc-font-weight-regular);
   font-size: var(--doc-body-size);
   line-height: var(--doc-body-line-height);
   letter-spacing: 0;
+  color: var(--doc-color-semantic-text-body);
+  text-decoration: none;
 }
 
-.section-title-cta-icon {
+main .section-title__cta-icon {
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: 36px;
-  height: 36px;
+  width: var(--section-title-cta-size);
+  height: var(--section-title-cta-size);
   overflow: hidden;
   border-radius: var(--doc-radius-full);
   background-color: var(--doc-color-semantic-button-primary-bg);
 }
 
-.section-title-cta-icon img {
+main .section-title__cta-icon img {
   display: block;
-  width: 18px;
-  height: 18px;
+  width: var(--section-title-cta-icon-size);
+  height: var(--section-title-cta-icon-size);
 }
 
-.section-title.h4 .section-title-cta-icon {
-  width: var(--doc-space-8);
-  height: var(--doc-space-8);
-}
-
-.section-title.h4 .section-title-cta-icon img {
-  width: var(--doc-space-4);
-  height: var(--doc-space-4);
-}
-
-.section-title-cta:hover .section-title-cta-icon {
+main .section-title__cta-icon:hover,
+main .section-title__cta-icon:active {
   background-color: var(--doc-color-semantic-button-primary-bg-hover);
 }
 
-.section-title-cta:focus-visible {
-  outline: none;
-}
-
-.section-title-cta:focus-visible .section-title-cta-icon {
-  outline: 2px solid var(--doc-color-semantic-text-primary);
-  outline-offset: var(--doc-space-1);
+main .section-title__cta:focus-visible .section-title__cta-icon {
+  outline: 3px solid var(--doc-color-semantic-border-focus);
+  outline-offset: 0;
 }
 
 @media (width >= 900px) {
-  .section-title {
-    gap: var(--doc-space-16);
+  main .section-title {
+    --section-title-gap: var(--doc-space-16);
+    --section-title-cta-gap: var(--doc-space-8);
+    --section-title-cta-size: var(--doc-space-16);
+    --section-title-cta-icon-size: var(--doc-space-6);
   }
 
-  .section-title.h3 {
-    gap: var(--doc-space-12);
+  main .section-title--h3 {
+    --section-title-gap: var(--doc-space-12);
   }
 
-  .section-title.h4 {
-    gap: var(--doc-space-10);
-  }
-
-  .section-title:not(.h4) .section-title-cta-label {
-    display: inline;
-    white-space: nowrap;
-  }
-
-  .section-title.h3 .section-title-cta-label {
+  main .section-title--h3 .section-title__cta-label {
     font-size: var(--doc-small-size);
     line-height: var(--doc-small-line-height);
   }
 
-  .section-title-cta {
-    gap: var(--doc-space-8);
+  main .section-title--h4 {
+    --section-title-gap: var(--doc-space-10);
+    --section-title-cta-gap: var(--doc-space-6);
+    --section-title-cta-size: var(--doc-space-10);
+    --section-title-cta-icon-size: var(--doc-space-4);
   }
 
-  .section-title.h4 .section-title-cta {
-    gap: var(--doc-space-6);
-  }
-
-  .section-title-cta-icon {
-    width: var(--doc-space-16);
-    height: var(--doc-space-16);
-  }
-
-  .section-title-cta-icon img {
-    width: var(--doc-space-6);
-    height: var(--doc-space-6);
-  }
-
-  .section-title.h4 .section-title-cta-icon {
-    width: var(--doc-space-10);
-    height: var(--doc-space-10);
-  }
-
-  .section-title.h4 .section-title-cta-icon img {
-    width: var(--doc-space-4);
-    height: var(--doc-space-4);
+  main .section-title:not(.section-title--h4) .section-title__cta-label {
+    display: inline;
+    white-space: nowrap;
   }
 }

@@ -24,17 +24,17 @@
         {
           "component": "text",
           "valueType": "string",
-          "name": "subheading",
-          "label": "Subheading",
-          "value": ""
-        },
-        {
-          "component": "text",
-          "valueType": "string",
           "name": "heading",
           "label": "Heading",
           "value": "",
           "required": true
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "subheading",
+          "label": "Subheading",
+          "value": ""
         },
         {
           "component": "text",

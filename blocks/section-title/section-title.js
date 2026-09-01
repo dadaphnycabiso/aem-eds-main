@@ -31,8 +31,8 @@ function parseCells(block) {
 
   if (cells.length >= 4) {
     return {
-      subheading: cellText(cells[0]),
-      heading: cellText(cells[1]),
+      heading: cellText(cells[0]),
+      subheading: cellText(cells[1]),
       ctaLabel: visibleCtaLabel(cellText(cells[2]), cellHref(cells[3])),
       ctaLink: cellHref(cells[3]),
     };
@@ -41,13 +41,13 @@ function parseCells(block) {
   const ctaCell = cells.find((cell) => cellHref(cell)) || null;
   const textCells = cells.filter((cell) => cell && cell !== ctaCell);
 
-  let subheading = '';
   let heading = '';
+  let subheading = '';
   if (textCells.length === 1) {
     heading = cellText(textCells[0]);
   } else if (textCells.length >= 2) {
-    subheading = cellText(textCells[0]);
-    heading = cellText(textCells[1]);
+    heading = cellText(textCells[0]);
+    subheading = cellText(textCells[1]);
   }
 
   const ctaLink = ctaCell ? cellHref(ctaCell) : '';
@@ -60,20 +60,20 @@ function parseCells(block) {
 
 function createCta(href, label, accessibleName) {
   const cta = document.createElement('a');
-  cta.className = 'section-title-cta';
+  cta.className = 'section-title__cta';
   cta.href = href;
   cta.setAttribute('aria-label', label || accessibleName);
 
   if (label) {
     const labelEl = document.createElement('span');
-    labelEl.className = 'section-title-cta-label';
+    labelEl.className = 'section-title__cta-label';
     labelEl.textContent = label;
     labelEl.setAttribute('aria-hidden', 'true');
     cta.append(labelEl);
   }
 
   const icon = document.createElement('span');
-  icon.className = 'icon icon-arrow-narrow-right section-title-cta-icon';
+  icon.className = 'icon icon-arrow-narrow-right section-title__cta-icon';
   icon.setAttribute('aria-hidden', 'true');
   cta.append(icon);
   decorateIcons(cta);
@@ -88,21 +88,24 @@ export default function decorate(block) {
   const {
     subheading, heading, ctaLabel, ctaLink,
   } = parseCells(block);
+  const level = headingTag(block);
+
+  block.classList.add(`section-title--${level}`);
 
   const textCol = document.createElement('div');
-  textCol.className = 'section-title-text';
+  textCol.className = 'section-title__text';
+
+  const headingEl = document.createElement(level);
+  headingEl.className = 'section-title__heading';
+  headingEl.textContent = heading;
+  textCol.append(headingEl);
 
   if (subheading) {
     const sub = document.createElement('p');
-    sub.className = 'section-title-subheading';
+    sub.className = 'section-title__subheading';
     sub.textContent = subheading;
     textCol.append(sub);
   }
-
-  const headingEl = document.createElement(headingTag(block));
-  headingEl.className = 'section-title-heading';
-  headingEl.textContent = heading;
-  textCol.append(headingEl);
 
   block.replaceChildren(textCol);
 

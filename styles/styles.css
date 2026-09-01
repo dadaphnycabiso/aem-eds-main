@@ -225,6 +225,10 @@
   --doc-space-28: 112px;
   --doc-space-64: 256px;
 
+  /* icon / icon-button sizes */
+  --doc-icon-sm: 18px;
+  --doc-icon-button-sm: 36px;
+
   /* corner radius */
   --doc-radius-2xs: 2px;
   --doc-radius-xs: 4px;

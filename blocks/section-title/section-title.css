@@ -1,0 +1,188 @@
+.section-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--doc-space-8);
+}
+
+.section-title.h3 {
+  gap: var(--doc-space-6);
+}
+
+.section-title.h4 {
+  gap: var(--doc-space-4);
+}
+
+.section-title-text {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--doc-space-1);
+  min-width: 0;
+}
+
+.section-title-subheading {
+  margin: 0;
+  width: 100%;
+  font-family: var(--doc-font-sans);
+  font-weight: var(--doc-font-weight-bold);
+  font-size: var(--doc-body-size);
+  line-height: var(--doc-body-line-height);
+  letter-spacing: 0;
+  color: var(--doc-color-semantic-text-accent);
+  overflow-wrap: break-word;
+}
+
+.section-title.h3 .section-title-subheading,
+.section-title.h4 .section-title-subheading {
+  font-size: var(--doc-small-size);
+  line-height: var(--doc-small-line-height);
+}
+
+.section-title-heading {
+  margin: 0;
+  width: 100%;
+  font-family: var(--doc-font-display);
+  font-weight: var(--doc-font-weight-medium);
+  font-size: var(--doc-h2-size);
+  line-height: var(--doc-h2-line-height);
+  letter-spacing: 0;
+  color: var(--doc-color-semantic-text-primary);
+  overflow-wrap: break-word;
+}
+
+.section-title.h3 .section-title-heading,
+.section-title.h4 .section-title-heading {
+  font-family: var(--doc-font-sans);
+  font-weight: var(--doc-font-weight-bold);
+}
+
+.section-title.h3 .section-title-heading {
+  font-size: var(--doc-h3-size);
+  line-height: var(--doc-h3-line-height);
+}
+
+.section-title.h4 .section-title-heading {
+  font-size: var(--doc-h4-size);
+  line-height: var(--doc-h4-line-height);
+}
+
+.section-title-cta {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: var(--doc-space-4);
+  color: var(--doc-color-semantic-text-body);
+  text-decoration: none;
+}
+
+.section-title-cta:any-link,
+.section-title-cta:hover,
+.section-title-cta:focus-visible {
+  color: var(--doc-color-semantic-text-body);
+  text-decoration: none;
+}
+
+.section-title-cta-label {
+  display: none;
+  font-family: var(--doc-font-sans);
+  font-weight: var(--doc-font-weight-regular);
+  font-size: var(--doc-body-size);
+  line-height: var(--doc-body-line-height);
+  letter-spacing: 0;
+}
+
+.section-title-cta-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 36px;
+  height: 36px;
+  overflow: hidden;
+  border-radius: var(--doc-radius-full);
+  background-color: var(--doc-color-semantic-button-primary-bg);
+}
+
+.section-title-cta-icon img {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+.section-title.h4 .section-title-cta-icon {
+  width: var(--doc-space-8);
+  height: var(--doc-space-8);
+}
+
+.section-title.h4 .section-title-cta-icon img {
+  width: var(--doc-space-4);
+  height: var(--doc-space-4);
+}
+
+.section-title-cta:hover .section-title-cta-icon {
+  background-color: var(--doc-color-semantic-button-primary-bg-hover);
+}
+
+.section-title-cta:focus-visible {
+  outline: none;
+}
+
+.section-title-cta:focus-visible .section-title-cta-icon {
+  outline: 2px solid var(--doc-color-semantic-text-primary);
+  outline-offset: var(--doc-space-1);
+}
+
+@media (width >= 900px) {
+  .section-title {
+    gap: var(--doc-space-16);
+  }
+
+  .section-title.h3 {
+    gap: var(--doc-space-12);
+  }
+
+  .section-title.h4 {
+    gap: var(--doc-space-10);
+  }
+
+  .section-title:not(.h4) .section-title-cta-label {
+    display: inline;
+    white-space: nowrap;
+  }
+
+  .section-title.h3 .section-title-cta-label {
+    font-size: var(--doc-small-size);
+    line-height: var(--doc-small-line-height);
+  }
+
+  .section-title-cta {
+    gap: var(--doc-space-8);
+  }
+
+  .section-title.h4 .section-title-cta {
+    gap: var(--doc-space-6);
+  }
+
+  .section-title-cta-icon {
+    width: var(--doc-space-16);
+    height: var(--doc-space-16);
+  }
+
+  .section-title-cta-icon img {
+    width: var(--doc-space-6);
+    height: var(--doc-space-6);
+  }
+
+  .section-title.h4 .section-title-cta-icon {
+    width: var(--doc-space-10);
+    height: var(--doc-space-10);
+  }
+
+  .section-title.h4 .section-title-cta-icon img {
+    width: var(--doc-space-4);
+    height: var(--doc-space-4);
+  }
+}

@@ -698,28 +698,34 @@ main .section.highlight {
   color: var(--doc-text-body);
 }
 
-/* Remapped block elements — h6 and h1 are used in the RTE blocks dropdown
-   as "Body 2" and "Caption". JS decoration converts them to semantic
-   <p class="text-body-small"> and <p class="text-caption"> on delivery.
-   These rules ensure they look correct in the editor preview and before
-   JS runs. H1 is repurposed for Caption in the Text Block only; the
-   Title component uses its own wrapper so these styles don't conflict. */
-.default-content-wrapper h6,
-[data-aue-type="richtext"] h6 {
+/* --- Body 1 Medium (Clear Sans 16 / 500) -------------------------------- */
+.text-body-medium,
+.default-content-wrapper p.text-body-medium {
   font-family: var(--doc-font-sans);
-  font-weight: var(--doc-font-weight-regular);
-  font-size: var(--doc-small-size);
-  line-height: var(--doc-small-line-height);
-  color: var(--doc-text-body);
+  font-weight: var(--doc-font-weight-medium);
+  font-size: var(--doc-body-size);
+  line-height: var(--doc-body-line-height);
+  color: var(--doc-color-semantic-text-primary);
 }
 
-.default-content-wrapper h1,
-[data-aue-type="richtext"] h1 {
+/* --- Body 2 Medium (Clear Sans 14 / 500) -------------------------------- */
+.text-body-small-medium,
+.default-content-wrapper p.text-body-small-medium {
   font-family: var(--doc-font-sans);
-  font-weight: var(--doc-font-weight-regular);
+  font-weight: var(--doc-font-weight-medium);
+  font-size: var(--doc-small-size);
+  line-height: var(--doc-small-line-height);
+  color: var(--doc-color-semantic-text-primary);
+}
+
+/* --- Caption Medium (Clear Sans 12 / 500) -------------------------------- */
+.text-caption-medium,
+.default-content-wrapper p.text-caption-medium {
+  font-family: var(--doc-font-sans);
+  font-weight: var(--doc-font-weight-medium);
   font-size: var(--doc-caption1-size);
   line-height: var(--doc-caption1-line-height);
-  color: var(--doc-text-body);
+  color: var(--doc-color-semantic-text-primary);
 }
 
 

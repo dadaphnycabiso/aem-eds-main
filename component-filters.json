@@ -20,9 +20,7 @@
           "h3",
           "h4",
           "h5",
-          "paragraph",
-          "h6",
-          "h1"
+          "paragraph"
         ],
         "list": [
           "bullet_list",
@@ -38,30 +36,53 @@
         "editor": [
           "removeformat"
         ],
+        "advanced": [
+          "classes"
+        ],
         "sections": [
           "blocks",
           "format",
           "list",
           "insert",
           "sr_script",
-          "editor"
+          "editor",
+          "advanced"
         ]
       },
       "actions": {
         "paragraph": {
           "label": "Body 1"
         },
-        "h6": {
-          "label": "Body 2"
-        },
-        "h1": {
-          "label": "Caption"
-        },
         "bullet_list": {
           "wrapInParagraphs": true
         },
         "ordered_list": {
           "wrapInParagraphs": true
+        },
+        "classes": {
+          "label": "Paragraph Style",
+          "options": [
+            {
+              "value": "text-body-medium",
+              "label": "Body 1 Medium"
+            },
+            {
+              "value": "text-body-small",
+              "label": "Body 2"
+            },
+            {
+              "value": "text-body-small-medium",
+              "label": "Body 2 Medium"
+            },
+            {
+              "value": "text-caption",
+              "label": "Caption"
+            },
+            {
+              "value": "text-caption-medium",
+              "label": "Caption Medium"
+            }
+          ]
         }
       }
     }

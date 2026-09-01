@@ -21,9 +21,31 @@ function headingTag(block) {
   return HEADING_TAGS.find((tag) => block.classList.contains(tag)) || 'h2';
 }
 
+function authoredLabel(cell) {
+  const source = cell?.querySelector('a') || cell;
+  if (!source) return '';
+  const clone = source.cloneNode(true);
+  clone.querySelectorAll('.sr-only').forEach((node) => node.remove());
+  return clone.textContent.replace(/\s+/g, ' ').trim();
+}
+
+/**
+ * AEM uses the href as link text when CTA Label is empty, and
+ * decorateExternalLinks may append "(external link)". Neither is a real label.
+ */
 function visibleCtaLabel(label, href) {
-  if (!label || label === href) return '';
-  return label;
+  const cleaned = (label || '')
+    .replace(/\(external link\)/gi, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (!cleaned) return '';
+  if (cleaned === href || looksLikeHref(cleaned)) return '';
+  try {
+    if (href && new URL(cleaned).href === new URL(href, window.location.href).href) {
+      return '';
+    }
+  } catch { /* not a comparable URL */ }
+  return cleaned;
 }
 
 function parseCells(block) {
@@ -51,7 +73,7 @@ function parseCells(block) {
   }
 
   const ctaLink = ctaCell ? cellHref(ctaCell) : '';
-  const ctaLabel = ctaCell ? visibleCtaLabel(cellText(ctaCell), ctaLink) : '';
+  const ctaLabel = ctaCell ? visibleCtaLabel(authoredLabel(ctaCell), ctaLink) : '';
 
   return {
     subheading, heading, ctaLabel, ctaLink,

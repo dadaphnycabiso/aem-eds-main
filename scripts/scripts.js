@@ -141,7 +141,8 @@ export function decorateExternalLinks(main) {
  * on the <p> element. No block-type remapping or JS conversion is needed.
  * @param {HTMLElement} _main The main container element (unused)
  */
-export function decorateTextStyles(_main) { /* intentionally empty */ }
+// eslint-disable-next-line no-unused-vars
+export function decorateTextStyles(main) { /* intentionally empty */ }
 
 /**
  * Decorates the main element.

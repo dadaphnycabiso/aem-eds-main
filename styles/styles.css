@@ -681,7 +681,8 @@ main .section.highlight {
 
 /* --- Body 2 (Small print ΓÇö Clear Sans 14) --------------------------- */
 .text-body-small,
-.default-content-wrapper p.text-body-small {
+.default-content-wrapper p.text-body-small,
+.default-content-wrapper span.text-body-small {
   font-family: var(--doc-font-sans);
   font-weight: var(--doc-font-weight-regular);
   font-size: var(--doc-small-size);
@@ -690,7 +691,8 @@ main .section.highlight {
 }
 
 .text-caption,
-.default-content-wrapper p.text-caption {
+.default-content-wrapper p.text-caption,
+.default-content-wrapper span.text-caption {
   font-family: var(--doc-font-sans);
   font-weight: var(--doc-font-weight-regular);
   font-size: var(--doc-caption1-size);
@@ -700,7 +702,8 @@ main .section.highlight {
 
 /* --- Body 1 Medium (Clear Sans 16 / 500) -------------------------------- */
 .text-body-medium,
-.default-content-wrapper p.text-body-medium {
+.default-content-wrapper p.text-body-medium,
+.default-content-wrapper span.text-body-medium {
   font-family: var(--doc-font-sans);
   font-weight: var(--doc-font-weight-medium);
   font-size: var(--doc-body-size);
@@ -710,7 +713,8 @@ main .section.highlight {
 
 /* --- Body 2 Medium (Clear Sans 14 / 500) -------------------------------- */
 .text-body-small-medium,
-.default-content-wrapper p.text-body-small-medium {
+.default-content-wrapper p.text-body-small-medium,
+.default-content-wrapper span.text-body-small-medium {
   font-family: var(--doc-font-sans);
   font-weight: var(--doc-font-weight-medium);
   font-size: var(--doc-small-size);
@@ -720,7 +724,8 @@ main .section.highlight {
 
 /* --- Caption Medium (Clear Sans 12 / 500) -------------------------------- */
 .text-caption-medium,
-.default-content-wrapper p.text-caption-medium {
+.default-content-wrapper p.text-caption-medium,
+.default-content-wrapper span.text-caption-medium {
   font-family: var(--doc-font-sans);
   font-weight: var(--doc-font-weight-medium);
   font-size: var(--doc-caption1-size);
